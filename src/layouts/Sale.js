@@ -52,7 +52,7 @@ const stockInfo = [
     {
         className: 'slide',
         srcImg: '/img/ddd.png',
-        text:"dfhdhhfdjhfjhf"
+        text:"Тройная радость: при покупке трех разных товаров - скидка 30% на самый дешевый из них"
     },
     {
         className: 'slide',
@@ -93,10 +93,9 @@ function RemainingPromotions() {
         return (
             <>
                 <div className="promotion" key={i}>
-                    
                     <img src={elem.srcImg} className="promotion__img"/> 
-                       
                     <p className="promotion__text">{elem.text}</p>
+                    <a href="#" className="journal-item__link"></a>
                 </div>
             </>
         );
@@ -104,22 +103,43 @@ function RemainingPromotions() {
 
     // Создаем последовательность блоков
     const promotionBlocks = [];
-    for (let i = 0; i < renderPromotions.length; i += 3) {
+    for (let i = 0; i < renderPromotions.length; i += 7) {
         // Добавляем двойной блок
         promotionBlocks.push(
-            <div className="double__block" key={i}>
+            <div className="triple__inline__block" key={i}>
                 {renderPromotions[i]}
                 {renderPromotions[i + 1]}
+                {renderPromotions[i + 2]}
+            </div>
+        );
+        promotionBlocks.push(
+            <div className="triple__block" key={i + 3}>
+                <div className="column__section">
+                    {renderPromotions[i + 3]}
+                    {renderPromotions[i + 4]}
+                </div>
+                <div className="large__section">
+                    {renderPromotions[i + 5]}
+                </div>
             </div>
         );
 
+
         // Добавляем одиночный блок, если он существует
-        if (renderPromotions[i + 2]) {
+        if (renderPromotions[i + 6]) {
             promotionBlocks.push(
-                <div className="single__block" key={i}>
-                    {renderPromotions[i + 2]}
+                <div className="single__block" key={i + 6}>
+                    {renderPromotions[i + 6]}
                 </div>
             );
+        } else{
+            promotionBlocks.push(
+                <div className="double__block" key={i + 6}>
+                    {renderPromotions[i + 6]}
+                    {renderPromotions[i + 7]}
+                </div>
+            );
+
         }
     }
     return (
