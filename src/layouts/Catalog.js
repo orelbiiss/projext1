@@ -2,15 +2,22 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import UpBtn from '../components/UpBtn';
 import '../CatalogPage.css'
+import React, { useState} from 'react';
 
 
 
 function Catalog() {
+  const [count, setCount] = useState(0);
+
+  const handleAddToCart = () => {
+    setCount(count + 1);
+  };
+
   return (
     <>
-      <Header />
+      <Header count = {count}/>
       <PageNav />
-      <ProductCatalog/>
+      <ProductCatalog  handleAddToCart= {handleAddToCart} />
       <Footer />
       <UpBtn />
     </>
@@ -96,7 +103,8 @@ function NavBlock({name, className, id}){
   )
 }
 
-function ProductCatalog() {
+function ProductCatalog({ handleAddToCart }) {
+
   const catalog = [
     {
       id: 'section__water',
@@ -257,19 +265,21 @@ function ProductCatalog() {
   ];
 
   const sections = catalog.map((elem, i) => {
-    return <Section id={elem.id} title={elem.title} cardsData={elem.cards} key={i} />;
+    return <Section id={elem.id} title={elem.title} cardsData={elem.cards} handleAddToCart={handleAddToCart} key={i} />;
   })
 
   return(<div className='catalog'>{sections}</div>)
 }
 
-function Section({ title, cardsData, id }) {
+function Section({ title, cardsData, id, handleAddToCart }) {
   const cards = cardsData.map((elem, i) => {
     return <Card name={elem.name}  
                  imgSrc1x= {elem.imgSrc1x} 
                  imgSrc2x= {elem.imgSrc2x} 
                  webpSrc1x= {elem.webpSrc1x} 
-                 webpSrc2x= {elem.webpSrc2x} key={i}/>;
+                 webpSrc2x= {elem.webpSrc2x} 
+                 handleAddToCart={handleAddToCart}
+                 key={i}/>;
   })
   return (
     <section id={id}>
@@ -281,7 +291,8 @@ function Section({ title, cardsData, id }) {
   );
 }
 
-function Card({name, imgSrc1x, imgSrc2x, webpSrc1x, webpSrc2x}){
+function Card({name, imgSrc1x, imgSrc2x, webpSrc1x, webpSrc2x, handleAddToCart}){
+  
   return(
     <div className="card">
       <div className="main__block">
@@ -300,15 +311,16 @@ function Card({name, imgSrc1x, imgSrc2x, webpSrc1x, webpSrc2x}){
         </picture>
         <p className="product__volume">0,75л</p>
         <div className="icon__add">
-          <img  className="icon" src='/img/add__to__basket.svg'></img>
+          <img  className="icon" src='/img/add__to__basket.svg' onClick={handleAddToCart}></img>
         </div>
+        <a href='/product__page' className='link__cover'></a>
       </div>
       <div className="volume__section">
         <p className="volume">500ml</p>
         <p className="volume">1000ml</p>
         <p className="volume">1500ml</p>
       </div>
-      <a href="#" className="position__name">
+      <a href="/product__page" className="position__name">
         {name.substring(0, 1).toUpperCase()+ name.substring(1, name.length).toLowerCase()}
       </a>
       <p className="product__price">от 100 ₽</p>

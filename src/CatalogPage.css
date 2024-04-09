@@ -33,7 +33,7 @@
   .juice,
   .smoothie,
   .sport__drink{
-    background: top / contain url(/public/img/Ellipse__pink.svg) no-repeat;
+    background: top / contain url(/public/img/Ellipse__blue.svg) no-repeat;
   }
   
   .bottle{
@@ -129,7 +129,7 @@
     height: 223px;
     background-color: var(--primary-fill-color);
     margin-bottom: 15px;
-  
+    position: relative;
   }
   
   .main__block > picture{
@@ -166,12 +166,24 @@
   
   .icon{
     transition: 0.2s ease;
+    z-index: 1;
   }
   
   .icon:hover{
-    width: 33px;
-    height: 33px;
+    transform: scale(1.1);
     fill:  var(--accent-color);
+  }
+
+  .link__cover{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .link__cover:hover .position__name{
+    color: var(--accent-color) !important;
   }
   
   .volume__section{
@@ -205,12 +217,6 @@
     line-height: 13px;
     height: 27px;
     transition: 0.2s ease;
-  }
-  
-  .position__name:hover{
-    width: 90%;
-    color: var(--accent-color);
-    font-size: 15px;
   }
   
   .product__price{
@@ -262,9 +268,6 @@
       height: 19px;
   }
   
-  .position__name:hover{
-      font-size: 19px;
-  }
   .form{
       width: 470px;
   }

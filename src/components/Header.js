@@ -1,10 +1,26 @@
 import React, { useState } from 'react';
+import { useMediaQuery } from 'usehooks-ts'
+import { useNavigate } from 'react-router-dom';
+import SidePanel from './SidePanel.js';
 import '../Header.css';
 
 
-function Header(){
+function Header({count}){
 
-  const [IsMenuOpen, setIsMenuOpen]  = useState("icon__menu__default")
+  const navigate = useNavigate();
+
+  const [IsMenuOpen, setIsMenuOpen] = useState("icon__menu__default");
+  const [isPanelOpen, setIsPanelOpen] = useState(false);
+  
+  const isSmallScreen = useMediaQuery('(max-width: 768px)');
+
+  function togglePanel() {
+    if (isSmallScreen) {
+      navigate('/cart'); // Переход на страницу корзины
+    } else {
+      setIsPanelOpen(!isPanelOpen); // Открытие SidePanel
+    }
+  }
   
   function handleMenuButtonClick(){
       if(IsMenuOpen === "icon__menu__cross"){
@@ -12,8 +28,6 @@ function Header(){
       } else {
         setIsMenuOpen("icon__menu__cross")} 
     }
-
-
 
   return(
     <header className="header__section">
@@ -77,7 +91,12 @@ function Header(){
         </li>
       </ul>
       <div className="basket__menu__icons">
-        <img className="icon__basket" src='/img/basket.svg' alt="корзина" />
+        <button className="icon__basket" onClick={togglePanel}>
+          <img className="icon__basket" src='/img/basket.svg' alt="корзина"/>
+        </button>
+        <div>
+          {count}
+        </div>
         <button 
           onClick = {handleMenuButtonClick}
           id="icon__menu"
@@ -89,7 +108,8 @@ function Header(){
           <span />
         </button>
       </div>
-    </header>
+      <SidePanel isOpen={isPanelOpen}  onClose={togglePanel} />
+  </header>
   )
 }
 
