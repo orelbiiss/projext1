@@ -1,5 +1,7 @@
 import Header from '../components/Header';
 import "../MainPage.css";  
+import React, { useContext, useState} from 'react';
+import { CartContext } from './CartContext';
 
 
 
@@ -81,6 +83,8 @@ function Main(){
 }
 
 function InfoProduct() {
+  const {cart, setCart} = useContext(CartContext);
+
   const info = [
     {
       imgSrc1x: "/img/ZeroP__Вода__негазированная.png",
@@ -112,6 +116,12 @@ function InfoProduct() {
   ];
 
   const SwiperSslide = info.map((elem, i) => {
+
+    const handleAddToCart = () => {
+      setCart(cart.concat([elem]));
+      console.log(cart);
+    };
+
     return(
       <SwiperSlide className="product" key={i}>
         <div className="product__img">
@@ -132,7 +142,7 @@ function InfoProduct() {
           <p className="product__name">{elem.name}</p>
           <div className="cost">
             <p>{elem.cost}</p>
-            <img className="plus" src='/img/plus.svg'/>
+            <img className="plus" src='/img/plus.svg' onClick={handleAddToCart}/>
           </div>
         </div>
         </SwiperSlide>

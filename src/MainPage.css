@@ -192,7 +192,8 @@ div.swiper-button-next::after{
 
   .first__section {
       padding-bottom: 69.5px;
-      width: 630px;
+      width: 70%;
+      gap: 40px;
   }
 
   .dop__text {
@@ -201,13 +202,17 @@ div.swiper-button-next::after{
   }
 
   .beverages {
-      padding: 22px 106px;
-      font-size: 18px;
+      padding: 28px 18%;
+      font-size: 24px;
+  }
+
+  .button{
+    gap: 25px;
   }
 
   .sale {
-      padding: 22px 116px;
-      font-size: 18px;
+      padding: 28px 20%;
+      font-size: 24px;
   }
 
   .products {
@@ -215,21 +220,33 @@ div.swiper-button-next::after{
       padding-left: 0;
   }
 
+  .description{
+    font-size: 22px;
+  }
+
+  .info__product{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
   .product__name,
   .cost {
-      width: 420px;
+      width: 80%;
       height: 69.5px;
   }
 
-  .plus {
-      width: 32px;
-      height: 32px;
+  .product__name, .cost{
+    font-size: 22px;
   }
 
-  .button__next {
-      padding: 42px 38px;
-      top: 20px;
-      left: 350px;
+  .plus {
+      width: 42px;
+      height: 42px;
+  }
+
+  div.swiper-button-next::after{
+    padding: 52px 48px;
   }
 }
 

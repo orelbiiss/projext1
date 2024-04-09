@@ -2,22 +2,19 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import UpBtn from '../components/UpBtn';
 import '../CatalogPage.css'
-import React, { useState} from 'react';
+import React, { useContext, useState} from 'react';
+import { CartContext } from './CartContext';
+import { Link } from 'react-router-dom';
 
 
 
 function Catalog() {
-  const [count, setCount] = useState(0);
-
-  const handleAddToCart = () => {
-    setCount(count + 1);
-  };
 
   return (
     <>
-      <Header count = {count}/>
+      <Header />
       <PageNav />
-      <ProductCatalog  handleAddToCart= {handleAddToCart} />
+      <ProductCatalog />
       <Footer />
       <UpBtn />
     </>
@@ -111,21 +108,21 @@ function ProductCatalog({ handleAddToCart }) {
       title: "Вода",
       cards: [
         {
-          name: "Zer0P Вода негазированная",
+          name: "Zer0P Вода негазированная 1",
           imgSrc1x: "/img/middle__water.png",
           imgSrc2x: "/img/2x/middle__water__2x.png",
           webpSrc1x: "/img/webp/middle__water.webp",
           webpSrc2x: "/img/webp/middle__water__2x.webp"
         },
         {
-          name: "Zer0P Вода негазированная",
+          name: "Zer0P Вода негазированная 2",
           imgSrc1x: "/img/middle__water.png",
           imgSrc2x: "/img/2x/middle__water__2x.png",
           webpSrc1x: "/img/webp/middle__water.webp",
           webpSrc2x: "/img/webp/middle__water__2x.webp"
         },
         {
-          name: "Zer0P Вода негазированная",
+          name: "Zer0P Вода негазированная 3",
           imgSrc1x: "/img/middle__water.png",
           imgSrc2x: "/img/2x/middle__water__2x.png",
           webpSrc1x: "/img/webp/middle__water.webp",
@@ -265,20 +262,15 @@ function ProductCatalog({ handleAddToCart }) {
   ];
 
   const sections = catalog.map((elem, i) => {
-    return <Section id={elem.id} title={elem.title} cardsData={elem.cards} handleAddToCart={handleAddToCart} key={i} />;
+    return <Section id={elem.id} title={elem.title} cardsData={elem.cards} key={i} />;
   })
 
   return(<div className='catalog'>{sections}</div>)
 }
 
-function Section({ title, cardsData, id, handleAddToCart }) {
+function Section({ title, cardsData, id }) {
   const cards = cardsData.map((elem, i) => {
-    return <Card name={elem.name}  
-                 imgSrc1x= {elem.imgSrc1x} 
-                 imgSrc2x= {elem.imgSrc2x} 
-                 webpSrc1x= {elem.webpSrc1x} 
-                 webpSrc2x= {elem.webpSrc2x} 
-                 handleAddToCart={handleAddToCart}
+    return <Card item={elem} 
                  key={i}/>;
   })
   return (
@@ -291,8 +283,16 @@ function Section({ title, cardsData, id, handleAddToCart }) {
   );
 }
 
-function Card({name, imgSrc1x, imgSrc2x, webpSrc1x, webpSrc2x, handleAddToCart}){
-  
+function Card({ item }){
+  const {cart, setCart} = useContext(CartContext);
+
+  let currentVolume = useState(0);
+
+  const handleAddToCart = () => {
+    item.volume = currentVolume;
+    setCart(cart.concat([item]));
+  };
+
   return(
     <div className="card">
       <div className="main__block">
@@ -301,19 +301,19 @@ function Card({name, imgSrc1x, imgSrc2x, webpSrc1x, webpSrc2x, handleAddToCart})
           <source
             className="main__block__product__img"
             type="image/webp"
-            srcSet  ={` ${webpSrc1x} 1x, ${webpSrc2x} 2x`}
+            srcSet  ={` ${item.webpSrc1x} 1x, ${item.webpSrc2x} 2x`}
           />
           <img
             className="main__block__product__img"
-            srcSet = {` ${imgSrc1x} 1x, ${imgSrc2x} 2x`}
-            alt={name}
+            srcSet = {` ${item.imgSrc1x} 1x, ${item.imgSrc2x} 2x`}
+            alt={item.name}
           />
         </picture>
         <p className="product__volume">0,75л</p>
         <div className="icon__add">
-          <img  className="icon" src='/img/add__to__basket.svg' onClick={handleAddToCart}></img>
+          <img className="icon" src='/img/add__to__basket.svg' onClick={handleAddToCart}></img>
         </div>
-        <a href='/product__page' className='link__cover'></a>
+        <Link to='/product__page' className='link__cover'></Link>
       </div>
       <div className="volume__section">
         <p className="volume">500ml</p>
@@ -321,7 +321,7 @@ function Card({name, imgSrc1x, imgSrc2x, webpSrc1x, webpSrc2x, handleAddToCart})
         <p className="volume">1500ml</p>
       </div>
       <a href="/product__page" className="position__name">
-        {name.substring(0, 1).toUpperCase()+ name.substring(1, name.length).toLowerCase()}
+        {item.name.substring(0, 1).toUpperCase()+ item.name.substring(1, item.name.length).toLowerCase()}
       </a>
       <p className="product__price">от 100 ₽</p>
     </div>

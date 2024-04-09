@@ -56,7 +56,7 @@ function MainBlock(){
                         <source
                         className="img"
                         type="image/webp"
-                        srcSet="/img/webp/big__img__juice.webp 1x, /img/webp/big__img__juice__2x.webp 2x"
+                        // srcSet="/img/webp/big__img__juice.webp 1x, /img/webp/big__img__juice__2x.webp 2x"
                         /> 
                         <img
                         className="img"

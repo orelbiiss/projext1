@@ -414,6 +414,14 @@
   .u-section-1 {
     padding-top: 100px;
   }
+  .u-section-1 .u-text-11,
+  .u-section-1 .u-text-10 {
+    font-size: 22px;
+  }
+  .u-section-1 .u-text-1, .u-section-1 .u-text-3, .u-section-1 .u-text-5, .u-section-1 .u-text-7{
+    font-size: 24px;
+  }
+ 
 }
 
 @media (max-width: 1199px) {

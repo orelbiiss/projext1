@@ -13,6 +13,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import ProductPage from './layouts/ProductPage';
+import CartContextProvider from './layouts/CartContext';
 
 
 const router = createBrowserRouter([
@@ -50,7 +51,9 @@ function App() {
   return (
     <>
       <PreLoader/> 
-      <RouterProvider router={router} />
+      <CartContextProvider>
+        <RouterProvider router={router} />
+      </CartContextProvider>
     </>
   );
 }

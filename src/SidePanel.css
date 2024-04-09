@@ -30,6 +30,7 @@
     margin-left: auto;
     margin-right: 0;
     width: 50%;
+    overflow-y: hidden;
 }
 
 
@@ -84,6 +85,23 @@
     border-radius: 100px;
     color: var(--primary-fill-color);
     text-transform: uppercase;
+}
+
+@media screen and (min-width: 1600px) {
+    .text__block__title{
+    font-size: 90px;
+    line-height: 90%;
+    }
+    .text__block, .display__area {
+        padding: 40px 200px 0;
+    }
+    .text__description{
+        font-size: 22px;
+    }
+    .close__btn{
+        width: 48px;
+        height: 48px;
+    }
 }
 
 @media screen and (max-width: 660px) {

@@ -197,6 +197,31 @@
   }
 
 
+
+  @media screen and (min-width: 1800px) {}
+  @media screen and (min-width: 1600px) {
+    .block__title{
+      font-size: 24px;
+    }
+    .second__block__text, .third__block__text{
+      font-size: 22px;
+    }
+
+    .phone__number > svg,
+    .e-mail > img,
+    .working__hours > svg {
+      width: 32px;
+      height: 32px;
+    }
+    .copyright,
+    .checkbox__label__text{
+      font-size: 18px;
+    }
+    .email__label{
+      font-size: 22px;
+    }
+  }
+
   @media screen and (max-width: 425px) {
     .form{
       display: none;

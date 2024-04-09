@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useMediaQuery } from 'usehooks-ts'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SidePanel from './SidePanel.js';
 import '../Header.css';
+import { CartContext } from '../layouts/CartContext.js';
 
 
-function Header({count}){
+function Header() {
 
   const navigate = useNavigate();
 
+  const { cart } = useContext(CartContext);
+
   const [IsMenuOpen, setIsMenuOpen] = useState("icon__menu__default");
   const [isPanelOpen, setIsPanelOpen] = useState(false);
-  
+
   const isSmallScreen = useMediaQuery('(max-width: 768px)');
 
   function togglePanel() {
@@ -75,27 +78,27 @@ function Header({count}){
       </ul>
       <ul className="navigation__links">
         <li className="hdr__text">
-          <a href="catalog">Напитки</a>
+          <Link to="/catalog">Напитки</Link>
         </li>
         <li className="hdr__text">
-          <a href="sale">Акции</a>
+          <Link to="/sale">Акции</Link>
         </li>
         <a href="/">
-          <img className="logo" src='/img/logo.svg' alt="Лого" />
+          <img className="logo" src='/img/logo.svg' alt="Лого" title='logo' />
         </a>
         <li className="hdr__text">
-          <a href="aboutUs">О нас</a>
+          <Link to="/aboutUs">О нас</Link>
         </li>
         <li className="hdr__text">
-          <a href="/contact">Контакты</a>
+          <Link to="/contact">Контакты</Link>
         </li>
       </ul>
       <div className="basket__menu__icons">
         <button className="icon__basket" onClick={togglePanel}>
           <img className="icon__basket" src='/img/basket.svg' alt="корзина"/>
         </button>
-        <div>
-          {count}
+        <div className={"count" + (cart.length ? ' active' : '')} onClick={togglePanel}>
+          {cart.length}
         </div>
         <button 
           onClick = {handleMenuButtonClick}
