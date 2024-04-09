@@ -100,7 +100,7 @@ function NavBlock({name, className, id}){
   )
 }
 
-function ProductCatalog({ handleAddToCart }) {
+function ProductCatalog() {
 
   const catalog = [
     {
@@ -112,28 +112,44 @@ function ProductCatalog({ handleAddToCart }) {
           imgSrc1x: "/img/middle__water.png",
           imgSrc2x: "/img/2x/middle__water__2x.png",
           webpSrc1x: "/img/webp/middle__water.webp",
-          webpSrc2x: "/img/webp/middle__water__2x.webp"
+          webpSrc2x: "/img/webp/middle__water__2x.webp",
+          volumes: [500, 1000, 1500],
+          price: 100 ,
+          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
+          quantity: 2
         },
         {
           name: "Zer0P Вода негазированная 2",
           imgSrc1x: "/img/middle__water.png",
           imgSrc2x: "/img/2x/middle__water__2x.png",
           webpSrc1x: "/img/webp/middle__water.webp",
-          webpSrc2x: "/img/webp/middle__water__2x.webp"
+          webpSrc2x: "/img/webp/middle__water__2x.webp",
+          volumes: [500, 1000, 1500],
+          price: 100 ,
+          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
+          quantity: 2
         },
         {
           name: "Zer0P Вода негазированная 3",
           imgSrc1x: "/img/middle__water.png",
           imgSrc2x: "/img/2x/middle__water__2x.png",
           webpSrc1x: "/img/webp/middle__water.webp",
-          webpSrc2x: "/img/webp/middle__water__2x.webp"
+          webpSrc2x: "/img/webp/middle__water__2x.webp",
+          volumes: [500, 1000, 1500],
+          price: 100 ,
+          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
+          quantity: 2
         },
         {
           name: "Foco Кокосовая вода",
           imgSrc1x: "/img/foco__coconut__water.png",
           imgSrc2x: "/img/2x/foco__coconut__water__2x.png",
           webpSrc1x: "/img/webp/foco__coconut__water.webp",
-          webpSrc2x: "/img/webp/foco__coconut__water__2x.webp"
+          webpSrc2x: "/img/webp/foco__coconut__water__2x.webp",
+          volumes: [500, 1000, 1500],
+          price: 100 ,
+          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
+          quantity: 2
         },
       ],
     },
@@ -146,28 +162,44 @@ function ProductCatalog({ handleAddToCart }) {
           imgSrc1x: "/img/2sj1i.png",
           imgSrc2x: "/img/2x/2sj1i__2x.png",
           webpSrc1x: "/img/webp/2sj1i.webp",
-          webpSrc2x: "/img/webp/2sj1i__2x.webp"
+          webpSrc2x: "/img/webp/2sj1i__2x.webp",
+          volumes: [500, 1000, 1500],
+          price: 100 ,
+          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
+          quantity: 2
         },
         {
           name: "СОК ВИШНЕВЫЙ СВЕЖЕВЫЖАТЫЙ",
           imgSrc1x: "/img/2sj2i.png",
           imgSrc2x: "/img/2x/2sj2i__2x.png",
           webpSrc1x: "/img/webp/2sj2i.webp",
-          webpSrc2x: "/img/webp/2sj2i__2x.webp"
+          webpSrc2x: "/img/webp/2sj2i__2x.webp",
+          volumes: [500, 1000, 1500],
+          price: 100 ,
+          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
+          quantity: 2
         },
         {
           name: "ITO NOEN СОК ЮДЗУ 100%я",
           imgSrc1x: "/img/2sj3i.png",
           imgSrc2x: "/img/2x/2sj3i__2x.png",
           webpSrc1x: "/img/webp/2sj3i.webp",
-          webpSrc2x: "/img/webp/2sj3i__2x.webp"
+          webpSrc2x: "/img/webp/2sj3i__2x.webp",
+          volumes: [500, 1000, 1500],
+          price: 100 ,
+          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
+          quantity: 2
         },
         {
           name: "СОК ХОЛОДНОГО ОТЖИМА CITRUS 3",
           imgSrc1x: "/img/2sj4i.png",
           imgSrc2x: "/img/2x/2sj4i__2x.png",
           webpSrc1x: "/img/webp/2sj4i.webp",
-          webpSrc2x: "/img/webp/2sj4i__2x.webp"
+          webpSrc2x: "/img/webp/2sj4i__2x.webp",
+          volumes: [500, 1000, 1500],
+          price: 100 ,
+          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
+          quantity: 2
         },
       ],
     },
@@ -180,28 +212,44 @@ function ProductCatalog({ handleAddToCart }) {
           imgSrc1x: "/img/3sf-d1j.png",
           imgSrc2x: "/img/2x/3sf-d1j__2x.png",
           webpSrc1x: "/img/webp/3sf-d1j.webp",
-          webpSrc2x: "/img/webp/3sf-d1j__2x.webp"
+          webpSrc2x: "/img/webp/3sf-d1j__2x.webp",
+          volumes: [500, 1000, 1500],
+          price: 100 ,
+          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
+          quantity: 2
         },
         {
           name: "МОРС ИЗ ОБЛЕПИХИ",
           imgSrc1x: "/img/3sf-d2j.png",
           imgSrc2x: "/img/2x/3sf-d2j__2x.png",
           webpSrc1x: "/img/webp/3sf-d2j.webp",
-          webpSrc2x: "/img/webp/3sf-d2j__2x.webp"
+          webpSrc2x: "/img/webp/3sf-d2j__2x.webp",
+          volumes: [500, 1000, 1500],
+          price: 100 ,
+          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
+          quantity: 2
         },
         {
           name: "МОРС ИЗ БРУСНИКИ",
           imgSrc1x: "/img/3sf-d3j.png",
           imgSrc2x: "/img/2x/3sf-d3j__2x.png",
           webpSrc1x: "/img/webp/3sf-d3j.webp",
-          webpSrc2x: "/img/webp/3sf-d3j__2x.webp"
+          webpSrc2x: "/img/webp/3sf-d3j__2x.webp",
+          volumes: [500, 1000, 1500],
+          price: 100 ,
+          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
+          quantity: 2
         },
         {
           name: "МОРС ИЗ КЛЮКВЫ",
           imgSrc1x: "/img/3sf-d4j.png",
           imgSrc2x: "/img/2x/3sf-d4j__2x.png",
           webpSrc1x: "/img/webp/3sf-d4j.webp",
-          webpSrc2x: "/img/webp/3sf-d4j__2x.webp"
+          webpSrc2x: "/img/webp/3sf-d4j__2x.webp",
+          volumes: [500, 1000, 1500],
+          price: 100 ,
+          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
+          quantity: 2
         },
       ],
     },
@@ -214,28 +262,44 @@ function ProductCatalog({ handleAddToCart }) {
           imgSrc1x: "/img/4ss1i.png",
           imgSrc2x: "/img/2x/4ss1i__2x.png",
           webpSrc1x: "/img/webp/4ss1i.webp",
-          webpSrc2x: "/img/webp/4ss1i__2x.webp"
+          webpSrc2x: "/img/webp/4ss1i__2x.webp",
+          volumes: [500, 1000, 1500],
+          price: 100 ,
+          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
+          quantity: 2
         },
         {
           name: "CLEAR BARN СМУЗИ COSMOS",
           imgSrc1x: "/img/4ss2i.png",
           imgSrc2x: "/img/2x/4ss2i__2x.png",
           webpSrc1x: "/img/webp/4ss2i.webp",
-          webpSrc2x: "/img/webp/4ss2i__2x.webp"
+          webpSrc2x: "/img/webp/4ss2i__2x.webp",
+          volumes: [500, 1000, 1500],
+          price: 100 ,
+          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
+          quantity: 2
         },
         {
           name: "CLEAR BARN СМУЗИ MR. FLANINGO ",
           imgSrc1x: "/img/4ss3i.png",
           imgSrc2x: "/img/2x/4ss3i__2x.png",
           webpSrc1x: "/img/webp/4ss3i.webp",
-          webpSrc2x: "/img/webp/4ss3i__2x.webp"
+          webpSrc2x: "/img/webp/4ss3i__2x.webp",
+          volumes: [500, 1000, 1500],
+          price: 100 ,
+          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
+          quantity: 2
         },
         {
           name: "CLEAR BARN СМУЗИ SUPER GIRL",
           imgSrc1x: "/img/4ss4i.png",
           imgSrc2x: "/img/2x/4ss4i__2x.png",
           webpSrc1x: "/img/webp/4ss4i.webp",
-          webpSrc2x: "/img/webp/4ss4i__2x.webp"
+          webpSrc2x: "/img/webp/4ss4i__2x.webp",
+          volumes: [500, 1000, 1500],
+          price: 100 ,
+          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
+          quantity: 2
         },
       ],
     },
@@ -248,14 +312,23 @@ function ProductCatalog({ handleAddToCart }) {
           imgSrc1x: "/img/5ss-d1i.png",
           imgSrc2x: "/img/2x/5ss-d1i__2x.png",
           webpSrc1x: "/img/webp/5ss-d1i.webp",
-          webpSrc2x: "/img/webp/5ss-d1i__2x.webp"
+          webpSrc2x: "/img/webp/5ss-d1i__2x.webp",
+          volumes: [500, 1000, 1500],
+          price: 100 ,
+          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
+          quantity: 2
         },
         {
           name: "ГИПОТоНИЧЕСКИЙ НАПИТОК",
           imgSrc1x: "/img/5ss-d2i.png",
           imgSrc2x: "/img/2x/5ss-d2i__2x.png",
           webpSrc1x: "/img/webp/5ss-d2i.webp",
-          webpSrc2x: "/img/webp/5ss-d2i__2x.webp"
+          webpSrc2x: "/img/webp/5ss-d2i__2x.webp",
+          volumes: [500, 1000, 1500],
+          price: 100 ,
+          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
+          quantity: 2
+
         },
       ],
     },
@@ -286,12 +359,20 @@ function Section({ title, cardsData, id }) {
 function Card({ item }){
   const {cart, setCart} = useContext(CartContext);
 
-  let currentVolume = useState(0);
+  let [CurrentVolume, setCurrentVolume] = useState(0);
+
+  const handleVolumeClick = (volume) => {
+    console.log(volume)
+    setCurrentVolume(volume)
+  }
 
   const handleAddToCart = () => {
-    item.volume = currentVolume;
-    setCart(cart.concat([item]));
+    const newItem = { ...item, volume: CurrentVolume }
+    setCart(cart.concat([newItem]));
+    console.log(cart)
   };
+
+  
 
   return(
     <div className="card">
@@ -311,14 +392,17 @@ function Card({ item }){
         </picture>
         <p className="product__volume">0,75л</p>
         <div className="icon__add">
-          <img className="icon" src='/img/add__to__basket.svg' onClick={handleAddToCart}></img>
+          <img className="icon" src='/img/add__to__basket.svg' onClick={handleAddToCart} ></img>
         </div>
         <Link to='/product__page' className='link__cover'></Link>
       </div>
       <div className="volume__section">
-        <p className="volume">500ml</p>
-        <p className="volume">1000ml</p>
-        <p className="volume">1500ml</p>
+        {item.volumes.map((volume, i) => {
+          return(
+            <p className="volume" onClick={() => handleVolumeClick(volume) } >
+            {volume}ml </p>
+          )
+        })}
       </div>
       <a href="/product__page" className="position__name">
         {item.name.substring(0, 1).toUpperCase()+ item.name.substring(1, item.name.length).toLowerCase()}

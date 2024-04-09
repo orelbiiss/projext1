@@ -94,9 +94,7 @@ function Header() {
         </li>
       </ul>
       <div className="basket__menu__icons">
-        <button className="icon__basket" onClick={togglePanel}>
-          <img className="icon__basket" src='/img/basket.svg' alt="корзина"/>
-        </button>
+        <img className="icon__basket" src='/img/basket.svg' alt="корзина" onClick={togglePanel}/>
         <div className={"count" + (cart.length ? ' active' : '')} onClick={togglePanel}>
           {cart.length}
         </div>

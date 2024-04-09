@@ -46,9 +46,15 @@ function ShoppingCart({ cart }){
   return(
     <>
       <p className='basket__text'>
-        корзина / {cart.length}
+        корзина <span>/ {cart.length}</span>
       </p>
       {cartCardsJsx}
+      <input
+        type="text"
+        id="promo__code__fiekd"
+        className="promo__code"
+        placeholder="ВВЕДИТЕ ПРОМОКОД"
+      />
     </>
   )
 }
@@ -56,19 +62,26 @@ function ShoppingCart({ cart }){
 function ShoppingCartCard({ item }) {
   return (
     <>
-    
-      <picture>
-        <source
-          className="main__block__product__img"
-          type="image/webp"
-          srcSet  ={` ${item.webpSrc1x} 1x, ${item.webpSrc2x} 2x`}
-        />
-        <img
-          className="main__block__product__img"
-          srcSet = {` ${item.imgSrc1x} 1x, ${item.imgSrc2x} 2x`}
-          alt={item.name}
-        />
-      </picture>
+    <div className='cart-item'>
+        <picture className='cart-item__img-wrapper'>
+          <source
+            className="main__block__product__img"
+            type="image/webp"
+            srcSet  ={` ${item.webpSrc1x} 1x, ${item.webpSrc2x} 2x`}
+            />
+          <img
+            className="main__block__product__img"
+            srcSet = {` ${item.imgSrc1x} 1x, ${item.imgSrc2x} 2x`}
+            alt={item.name}
+            />
+        </picture>
+        <div className='cart-item__content-description'>
+          <p>{item.ingredients}</p>
+          <p>{item.name}</p>
+          <p>{item.volume}</p>
+        </div>
+        <p>{item.price}</p>
+    </div>
     </>
   );
 }

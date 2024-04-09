@@ -6,9 +6,6 @@
 }
 
 .product__image__section{
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -18,7 +15,17 @@
     z-index: 3;
 }
 
-.img{
+.product__image__wrapper  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}                
+
+
+.img__product__page{
+    height: 70%;
     filter: drop-shadow(-12px 9px 15.2px rgba(0, 0, 0, 0.15));
 }
 
