@@ -114,9 +114,11 @@ function ProductCatalog() {
           webpSrc1x: "/img/webp/middle__water.webp",
           webpSrc2x: "/img/webp/middle__water__2x.webp",
           volumes: [500, 1000, 1500],
+          prices: [100, 150, 200],
           price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 2
+          quantity: 2,
+          sale: 20
         },
         {
           name: "Zer0P Вода негазированная 2",
@@ -125,6 +127,7 @@ function ProductCatalog() {
           webpSrc1x: "/img/webp/middle__water.webp",
           webpSrc2x: "/img/webp/middle__water__2x.webp",
           volumes: [500, 1000, 1500],
+          prices: [100, 150, 200],
           price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
           quantity: 2
@@ -136,6 +139,7 @@ function ProductCatalog() {
           webpSrc1x: "/img/webp/middle__water.webp",
           webpSrc2x: "/img/webp/middle__water__2x.webp",
           volumes: [500, 1000, 1500],
+          prices: [100, 150, 200],
           price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
           quantity: 2
@@ -147,6 +151,7 @@ function ProductCatalog() {
           webpSrc1x: "/img/webp/foco__coconut__water.webp",
           webpSrc2x: "/img/webp/foco__coconut__water__2x.webp",
           volumes: [500, 1000, 1500],
+          prices: [100, 150, 200],
           price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
           quantity: 2
@@ -164,6 +169,7 @@ function ProductCatalog() {
           webpSrc1x: "/img/webp/2sj1i.webp",
           webpSrc2x: "/img/webp/2sj1i__2x.webp",
           volumes: [500, 1000, 1500],
+          prices: [100, 150, 200],
           price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
           quantity: 2
@@ -175,6 +181,7 @@ function ProductCatalog() {
           webpSrc1x: "/img/webp/2sj2i.webp",
           webpSrc2x: "/img/webp/2sj2i__2x.webp",
           volumes: [500, 1000, 1500],
+          prices: [100, 150, 200],
           price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
           quantity: 2
@@ -186,6 +193,7 @@ function ProductCatalog() {
           webpSrc1x: "/img/webp/2sj3i.webp",
           webpSrc2x: "/img/webp/2sj3i__2x.webp",
           volumes: [500, 1000, 1500],
+          prices: [100, 150, 200],
           price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
           quantity: 2
@@ -197,6 +205,7 @@ function ProductCatalog() {
           webpSrc1x: "/img/webp/2sj4i.webp",
           webpSrc2x: "/img/webp/2sj4i__2x.webp",
           volumes: [500, 1000, 1500],
+          prices: [100, 150, 200],
           price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
           quantity: 2
@@ -214,6 +223,7 @@ function ProductCatalog() {
           webpSrc1x: "/img/webp/3sf-d1j.webp",
           webpSrc2x: "/img/webp/3sf-d1j__2x.webp",
           volumes: [500, 1000, 1500],
+          prices: [100, 150, 200],
           price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
           quantity: 2
@@ -225,6 +235,7 @@ function ProductCatalog() {
           webpSrc1x: "/img/webp/3sf-d2j.webp",
           webpSrc2x: "/img/webp/3sf-d2j__2x.webp",
           volumes: [500, 1000, 1500],
+          prices: [100, 150, 200],
           price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
           quantity: 2
@@ -236,6 +247,7 @@ function ProductCatalog() {
           webpSrc1x: "/img/webp/3sf-d3j.webp",
           webpSrc2x: "/img/webp/3sf-d3j__2x.webp",
           volumes: [500, 1000, 1500],
+          prices: [100, 150, 200],
           price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
           quantity: 2
@@ -247,6 +259,7 @@ function ProductCatalog() {
           webpSrc1x: "/img/webp/3sf-d4j.webp",
           webpSrc2x: "/img/webp/3sf-d4j__2x.webp",
           volumes: [500, 1000, 1500],
+          prices: [100, 150, 200],
           price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
           quantity: 2
@@ -264,6 +277,7 @@ function ProductCatalog() {
           webpSrc1x: "/img/webp/4ss1i.webp",
           webpSrc2x: "/img/webp/4ss1i__2x.webp",
           volumes: [500, 1000, 1500],
+          prices: [100, 150, 200],
           price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
           quantity: 2
@@ -275,6 +289,7 @@ function ProductCatalog() {
           webpSrc1x: "/img/webp/4ss2i.webp",
           webpSrc2x: "/img/webp/4ss2i__2x.webp",
           volumes: [500, 1000, 1500],
+          prices: [100, 150, 200],
           price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
           quantity: 2
@@ -286,6 +301,7 @@ function ProductCatalog() {
           webpSrc1x: "/img/webp/4ss3i.webp",
           webpSrc2x: "/img/webp/4ss3i__2x.webp",
           volumes: [500, 1000, 1500],
+          prices: [100, 150, 200],
           price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
           quantity: 2
@@ -297,6 +313,7 @@ function ProductCatalog() {
           webpSrc1x: "/img/webp/4ss4i.webp",
           webpSrc2x: "/img/webp/4ss4i__2x.webp",
           volumes: [500, 1000, 1500],
+          prices: [100, 150, 200],
           price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
           quantity: 2
@@ -314,6 +331,7 @@ function ProductCatalog() {
           webpSrc1x: "/img/webp/5ss-d1i.webp",
           webpSrc2x: "/img/webp/5ss-d1i__2x.webp",
           volumes: [500, 1000, 1500],
+          prices: [100, 150, 200],
           price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
           quantity: 2
@@ -325,6 +343,7 @@ function ProductCatalog() {
           webpSrc1x: "/img/webp/5ss-d2i.webp",
           webpSrc2x: "/img/webp/5ss-d2i__2x.webp",
           volumes: [500, 1000, 1500],
+          prices: [100, 150, 200],
           price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
           quantity: 2
@@ -362,18 +381,17 @@ function Card({ item }){
   let [CurrentVolume, setCurrentVolume] = useState(0);
 
   const handleVolumeClick = (volume) => {
-    console.log(volume)
     setCurrentVolume(volume)
   }
 
   const handleAddToCart = () => {
     const newItem = { ...item, volume: CurrentVolume }
     setCart(cart.concat([newItem]));
-    console.log(cart)
   };
 
+  const currentPriceIndex = item.volumes.indexOf(CurrentVolume);
+  const currentPrice = item.prices[currentPriceIndex];
   
-
   return(
     <div className="card">
       <div className="main__block">
@@ -407,7 +425,7 @@ function Card({ item }){
       <a href="/product__page" className="position__name">
         {item.name.substring(0, 1).toUpperCase()+ item.name.substring(1, item.name.length).toLowerCase()}
       </a>
-      <p className="product__price">от 100 ₽</p>
+      <p className="product__price">{CurrentVolume !== 0 ? ` ${currentPrice}₽ ` : "от 100 ₽"}</p>
     </div>
   )
 }

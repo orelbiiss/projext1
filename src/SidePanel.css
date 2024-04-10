@@ -1,3 +1,5 @@
+
+
 .side__panel{
     display: none;
     right: -50%; 
@@ -27,19 +29,19 @@
 .content__block{
     background-color: rgb(255, 255, 255);
     position: relative;
+    height: 100%;
     margin-left: auto;
     margin-right: 0;
     width: 50%;
-    overflow-y: hidden;
+    overflow-y: scroll;
 }
-
 
 .content{
     box-sizing: border-box;
-    height: 100%;
     position: relative;
     padding: 80px 60px;
 }
+
 .close__btn{
     position: absolute;
     cursor: pointer;
@@ -90,6 +92,7 @@
 /*  */
 
 .basket__text{
+    margin: 0 0 15px;
     font-size: 35px;
     font-family: TildaSansSemibold;
 }
@@ -100,7 +103,7 @@
 
 .cart-item{
     display: flex;
-    margin-top: 40px;
+    padding: 20px 0;
 }
 
 .cart-item__img-wrapper{
@@ -110,6 +113,11 @@
     width: 150px;
     height: 150px;
     background-color:  var(--secondary-fill-color);
+}
+
+.product__cards__block,
+.promo__code{
+    margin: 0 0 60px;
 }
 
 .promo__code{
@@ -123,12 +131,60 @@
     outline:none;
     color: #7F7F7F;
     text-transform: uppercase;
-    margin: 0 0 61px;
 }
 
 .promo__code::placeholder{
     font-size: 12px;
     font-family: TildaSansSemibold;
+}
+
+.title__cost__info{
+    font-size: 25px;
+    font-family: TildaSansSemibold;
+    margin: 0 0 31px;
+}
+
+.product__price__cart__wrapper,
+.total__price__wrapper,
+.total__sale__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.total__sale__wrapper,
+.product__price__cart__wrapper{
+    margin: 10px 0 0;
+}
+
+.total__price__wrapper{
+    margin: 18px 0 0;
+}
+
+.product__price__cart,
+.total__sale {
+    font-family: TildaSansLight;
+    font-size: clamp(0.75rem, 0.663rem + 0.38vw, 1.125rem);
+}
+
+.total__sale,
+.total__sale__wrapper > span{
+    color: var(--accent-color);
+}
+
+.product__price__cart__wrapper > span,
+.total__sale__wrapper > span {
+    font-family: TildaSansSemibold;
+    font-size: clamp(0.75rem, 0.663rem + 0.38vw, 1.125rem);
+}
+
+.total__price{
+    font-family: TildaSansSemibold;
+}
+
+.total__price__wrapper > span{
+    font-family: TildaSansSemibold;
+    font-size: 25px;
 }
 
 @media screen and (min-width: 1600px) {
