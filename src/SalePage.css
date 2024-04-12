@@ -243,14 +243,27 @@
   border-radius: 20px;
 }
 
+@media screen and  (min-width: 1800px){
+  .name{
+    font-size: 22px;
+  }
+  .promotion__text,
+  .set__subtitle,
+  .set__price > p{
+    font-size: 33px;
+  }
 
-
-@media screen and (min-width: 1600px) {
+  .promotion__deadline{
+    font-size: 18px;
+  }
+  .set__description__container{
+    font-size: 22px;
+  }
 
   .triple__block{
     grid-template-columns: 540px auto;
     grid-template-rows: 520px 335px;
-}
+  }
 
   .set__picture {
     width: auto;
@@ -266,31 +279,21 @@
     grid-template-rows: 550px;
   }
 
-  .name{
-    font-size: 22px;
-  }
-
   .promotion__num p {
     width: 600px;
     font-size: 60px;
   }
 
-  .promotion__text,
-  .set__subtitle,
-  .set__price > p{
-    font-size: 33px;
-  }
-
-  .promotion__deadline{
-    font-size: 18px;
-  }
-  .set__description__container{
-    font-size: 22px;
-  }
   .set__price > img{
     width: 45px;
     height: 45px;
   }
+}
+
+@media screen and (min-width: 1500px) and (max-width: 1799px) {
+
+
+ 
 }
 
 /* Экраны шириной меньше 1250px */

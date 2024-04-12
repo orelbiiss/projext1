@@ -93,7 +93,9 @@ function InfoProduct() {
       webpSrc2x: "/img/webp/ZeroP__Вода__негазированная__2x.webp",
       alt: "Вода негазировананая",
       name: "ZeroP: Вода негазированная",
-      cost: "100 ₽"
+      cost: "100 ₽",
+      volumes: [500, 1000, 1500],
+      prices: [100, 150, 200]
     },
     {
       imgSrc1x: "/img/ZeroP__Вишневый__сок.png",
@@ -102,7 +104,9 @@ function InfoProduct() {
       webpSrc2x: "/img/webp/ZeroP__Вишневый__сок__2x.webp",
       alt: "Вишневый сок",
       name: "ZeroP: Вишневый сок свежевыжатый",
-      cost: "100 ₽"
+      cost: "100 ₽",
+      volumes: [500, 1000, 1500],
+      prices: [100, 150, 200],
     },
     {
       imgSrc1x: "/img/ZeroP__Orange__juice.png",
@@ -111,7 +115,9 @@ function InfoProduct() {
       webpSrc2x: "/img/webp/ZeroP__Orange__juice__2x.webp",
       alt: "Апельсиновый сок",
       name: "ZeroP: Апельсиновый сок свежевыжатый",
-      cost: "200 ₽"
+      cost: "200 ₽",
+      volumes: [500, 1000, 1500],
+      prices: [100, 150, 200],
     }
   ];
 
@@ -142,7 +148,7 @@ function InfoProduct() {
           <p className="product__name">{elem.name}</p>
           <div className="cost">
             <p>{elem.cost}</p>
-            <img className="plus" src='/img/plus.svg' onClick={handleAddToCart}/>
+            <img className="plus" src='/img/add__ring.svg' onClick={handleAddToCart}/>
           </div>
         </div>
         </SwiperSlide>

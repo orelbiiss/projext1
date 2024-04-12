@@ -58,7 +58,6 @@
 }
 
 .icon__basket{
-  padding: 5px;
   cursor: pointer;
   border: 0;
 }
@@ -83,33 +82,41 @@
   display: none;
 }
 
+@media screen and (min-width: 1800px){
+
+  .navigation__links{
+    font-size: 22px;
+  }
+
+  .icon__basket {
+    width: 21px;
+    height: 30px;
+  }
+
+  .icon__tg, .icon__vk, .icon__wa{
+    width: 21px;
+    height: 30px;
+  }
+
+  .count{
+    top: 28px;
+    right: -10px;
+    font-size: 12px;
+    width: 25px;
+    height: 25px;
+  }
+}
 
 /* Экраны шириной больше 1600px */
-@media screen and (min-width: 1600px) {
-.header__section {
+@media screen and (min-width: 1600px) and (max-width: 1799px) {
+  .header__section {
     height: 100px;
-}
+  }
 
-.navigation__links{
-    font-size: 22px;
-}
-
-.icon__basket {
-    width: 38px;
-    height: 44px;
-}
-.icon__tg, .icon__vk, .icon__wa{
-  width: 30px;
-  height: 38px;
-}
-
-.count{
-  top: 28px;
-  right: -10px;
-  font-size: 12px;
-  width: 25px;
-  height: 25px;
-}
+  .icon__basket {
+      width: 19px;
+      height: 27px;
+  }
 
 }
 

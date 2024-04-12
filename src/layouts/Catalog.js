@@ -2,26 +2,25 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import UpBtn from '../components/UpBtn';
 import '../CatalogPage.css'
-import React, { useContext, useState} from 'react';
+import React, { useContext, useState, useEffect} from 'react';
 import { CartContext } from './CartContext';
+import  useCart  from './useCart';
 import { Link } from 'react-router-dom';
 
 
 
 function Catalog() {
-
+  const { addToCart } = useCart()
   return (
     <>
       <Header />
       <PageNav />
-      <ProductCatalog />
+      <ProductCatalog addToCart={addToCart} />
       <Footer />
       <UpBtn />
     </>
   )
 }
-
-
 
 function PageNav(){
   const link = [
@@ -65,6 +64,8 @@ function PageNav(){
   )
 }
 
+
+// Компонент навигации по странице
 function NavBlock({name, className, id}){
   return(
     <div className={className}>
@@ -100,7 +101,7 @@ function NavBlock({name, className, id}){
   )
 }
 
-function ProductCatalog() {
+function ProductCatalog({ addToCart }) {
 
   const catalog = [
     {
@@ -115,10 +116,10 @@ function ProductCatalog() {
           webpSrc2x: "/img/webp/middle__water__2x.webp",
           volumes: [500, 1000, 1500],
           prices: [100, 150, 200],
-          price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 2,
-          sale: 20
+          sale: 20,
+          quantity: 3,
+          id: "1sw1p"
         },
         {
           name: "Zer0P Вода негазированная 2",
@@ -128,9 +129,9 @@ function ProductCatalog() {
           webpSrc2x: "/img/webp/middle__water__2x.webp",
           volumes: [500, 1000, 1500],
           prices: [100, 150, 200],
-          price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 2
+          quantity: 3,
+          id: "1sw2p"
         },
         {
           name: "Zer0P Вода негазированная 3",
@@ -140,9 +141,9 @@ function ProductCatalog() {
           webpSrc2x: "/img/webp/middle__water__2x.webp",
           volumes: [500, 1000, 1500],
           prices: [100, 150, 200],
-          price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 2
+          quantity: 3,
+          id: "1sw3p"
         },
         {
           name: "Foco Кокосовая вода",
@@ -152,9 +153,9 @@ function ProductCatalog() {
           webpSrc2x: "/img/webp/foco__coconut__water__2x.webp",
           volumes: [500, 1000, 1500],
           prices: [100, 150, 200],
-          price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 2
+          quantity: 3,
+          id: "1sw4p"
         },
       ],
     },
@@ -170,9 +171,9 @@ function ProductCatalog() {
           webpSrc2x: "/img/webp/2sj1i__2x.webp",
           volumes: [500, 1000, 1500],
           prices: [100, 150, 200],
-          price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 2
+          quantity: 3,
+          id: "2sj1p"
         },
         {
           name: "СОК ВИШНЕВЫЙ СВЕЖЕВЫЖАТЫЙ",
@@ -182,9 +183,9 @@ function ProductCatalog() {
           webpSrc2x: "/img/webp/2sj2i__2x.webp",
           volumes: [500, 1000, 1500],
           prices: [100, 150, 200],
-          price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 2
+          quantity: 3,
+          id: "2sj2p"
         },
         {
           name: "ITO NOEN СОК ЮДЗУ 100%я",
@@ -194,9 +195,9 @@ function ProductCatalog() {
           webpSrc2x: "/img/webp/2sj3i__2x.webp",
           volumes: [500, 1000, 1500],
           prices: [100, 150, 200],
-          price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 2
+          quantity: 3,
+          id: "2sj3p"
         },
         {
           name: "СОК ХОЛОДНОГО ОТЖИМА CITRUS 3",
@@ -206,9 +207,9 @@ function ProductCatalog() {
           webpSrc2x: "/img/webp/2sj4i__2x.webp",
           volumes: [500, 1000, 1500],
           prices: [100, 150, 200],
-          price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 2
+          quantity: 3,
+          id: "2sj4p"
         },
       ],
     },
@@ -224,9 +225,9 @@ function ProductCatalog() {
           webpSrc2x: "/img/webp/3sf-d1j__2x.webp",
           volumes: [500, 1000, 1500],
           prices: [100, 150, 200],
-          price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 2
+          quantity: 3,
+          id: "3sf-d1p"
         },
         {
           name: "МОРС ИЗ ОБЛЕПИХИ",
@@ -236,9 +237,9 @@ function ProductCatalog() {
           webpSrc2x: "/img/webp/3sf-d2j__2x.webp",
           volumes: [500, 1000, 1500],
           prices: [100, 150, 200],
-          price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 2
+          quantity: 3,
+          id: "3sf-d2p"
         },
         {
           name: "МОРС ИЗ БРУСНИКИ",
@@ -248,9 +249,9 @@ function ProductCatalog() {
           webpSrc2x: "/img/webp/3sf-d3j__2x.webp",
           volumes: [500, 1000, 1500],
           prices: [100, 150, 200],
-          price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 2
+          quantity: 3,
+          id: "3sf-d3p"
         },
         {
           name: "МОРС ИЗ КЛЮКВЫ",
@@ -260,9 +261,9 @@ function ProductCatalog() {
           webpSrc2x: "/img/webp/3sf-d4j__2x.webp",
           volumes: [500, 1000, 1500],
           prices: [100, 150, 200],
-          price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 2
+          quantity: 3,
+          id: "3sf-d4p"
         },
       ],
     },
@@ -278,9 +279,9 @@ function ProductCatalog() {
           webpSrc2x: "/img/webp/4ss1i__2x.webp",
           volumes: [500, 1000, 1500],
           prices: [100, 150, 200],
-          price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 2
+          quantity: 3,
+          id: "4ss1p"
         },
         {
           name: "CLEAR BARN СМУЗИ COSMOS",
@@ -290,9 +291,9 @@ function ProductCatalog() {
           webpSrc2x: "/img/webp/4ss2i__2x.webp",
           volumes: [500, 1000, 1500],
           prices: [100, 150, 200],
-          price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 2
+          quantity: 3,
+          id: "4ss2p"
         },
         {
           name: "CLEAR BARN СМУЗИ MR. FLANINGO ",
@@ -302,9 +303,9 @@ function ProductCatalog() {
           webpSrc2x: "/img/webp/4ss3i__2x.webp",
           volumes: [500, 1000, 1500],
           prices: [100, 150, 200],
-          price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 2
+          quantity: 3,
+          id: "4ss3p"
         },
         {
           name: "CLEAR BARN СМУЗИ SUPER GIRL",
@@ -314,9 +315,9 @@ function ProductCatalog() {
           webpSrc2x: "/img/webp/4ss4i__2x.webp",
           volumes: [500, 1000, 1500],
           prices: [100, 150, 200],
-          price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 2
+          quantity: 3,
+          id: "4ss4p"
         },
       ],
     },
@@ -332,9 +333,9 @@ function ProductCatalog() {
           webpSrc2x: "/img/webp/5ss-d1i__2x.webp",
           volumes: [500, 1000, 1500],
           prices: [100, 150, 200],
-          price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 2
+          quantity: 3,
+          id: "5ss-d1p"
         },
         {
           name: "ГИПОТоНИЧЕСКИЙ НАПИТОК",
@@ -344,26 +345,27 @@ function ProductCatalog() {
           webpSrc2x: "/img/webp/5ss-d2i__2x.webp",
           volumes: [500, 1000, 1500],
           prices: [100, 150, 200],
-          price: 100 ,
           ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 2
-
+          quantity: 3,
+          id: "5ss-d2p"
         },
       ],
     },
   ];
 
   const sections = catalog.map((elem, i) => {
-    return <Section id={elem.id} title={elem.title} cardsData={elem.cards} key={i} />;
+  return <Section id={elem.id} title={elem.title} cardsData={elem.cards} addToCart={addToCart}  key={i}/>;
   })
 
   return(<div className='catalog'>{sections}</div>)
 }
 
-function Section({ title, cardsData, id }) {
+function Section({ title, cardsData, id, addToCart }) {
   const cards = cardsData.map((elem, i) => {
     return <Card item={elem} 
-                 key={i}/>;
+                 key={i}
+                 addToCart={addToCart} 
+                />;
   })
   return (
     <section id={id}>
@@ -375,20 +377,23 @@ function Section({ title, cardsData, id }) {
   );
 }
 
-function Card({ item }){
-  const {cart, setCart} = useContext(CartContext);
-
+function Card({ item, addToCart }){
+  
   let [CurrentVolume, setCurrentVolume] = useState(0);
 
+ // выбор объема товара
   const handleVolumeClick = (volume) => {
     setCurrentVolume(volume)
+    console.log(volume)
   }
 
   const handleAddToCart = () => {
-    const newItem = { ...item, volume: CurrentVolume }
-    setCart(cart.concat([newItem]));
+    // Вызываем функцию addToCart и передаем в нее товар item
+    addToCart(item, 
+            CurrentVolume);
   };
 
+  // цена для выбранного объема товара
   const currentPriceIndex = item.volumes.indexOf(CurrentVolume);
   const currentPrice = item.prices[currentPriceIndex];
   
@@ -417,7 +422,7 @@ function Card({ item }){
       <div className="volume__section">
         {item.volumes.map((volume, i) => {
           return(
-            <p className="volume" onClick={() => handleVolumeClick(volume) } >
+            <p className={'volume' + (volume !== CurrentVolume ? ' active' : '')} onClick={() => handleVolumeClick(volume) } >
             {volume}ml </p>
           )
         })}

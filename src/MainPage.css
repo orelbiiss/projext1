@@ -176,52 +176,55 @@ div.swiper-button-next::after{
 
 .plus{
   transition: 0.3s ease;
+  cursor: pointer;
 }
 
 .plus:hover {
   transform: scale(1.1) rotate(90deg);
 }
 
-
-/* Экраны шириной больше 1600px */
-@media screen and (min-width: 1600px) {
-  
-  .oblast {
-      padding-top: 100px;
+@media screen and  (min-width: 1800px){
+  .oblast{
+    min-height: 1180px;
   }
-
   .first__section {
-      padding-bottom: 69.5px;
-      width: 70%;
-      gap: 40px;
-  }
-
-  .dop__text {
-      margin-top: 10px;
-      display: block;
+    padding-bottom: 69.5px;
+    width: 78%;
+    gap: 40px;
   }
 
   .beverages {
-      padding: 28px 18%;
-      font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 18%;
+    font-size: 24px;
   }
+
+  .dop__text {
+    margin-top: 10px;
+    display: block;
+}
 
   .button{
     gap: 25px;
   }
 
   .sale {
-      padding: 28px 20%;
-      font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 20%;
+    font-size: 24px;
   }
 
-  .products {
-      gap: 25%;
-      padding-left: 0;
-  }
-
-  .description{
+  .description,
+  .product__name, .cost{
     font-size: 22px;
+  }
+
+  .product__name, .cost{
+    width: 510px;
   }
 
   .info__product{
@@ -230,23 +233,59 @@ div.swiper-button-next::after{
     flex-direction: column;
   }
 
-  .product__name,
-  .cost {
-      width: 80%;
-      height: 69.5px;
-  }
-
-  .product__name, .cost{
-    font-size: 22px;
-  }
-
   .plus {
-      width: 42px;
-      height: 42px;
-  }
+    width: 42px;
+    height: 42px;
+}
 
   div.swiper-button-next::after{
     padding: 52px 48px;
+  }
+}
+
+
+/* Экраны шириной больше 1600px */
+@media screen and (min-width: 1500px) and (max-width: 1799px){
+  
+  .oblast {
+    padding-top: 100px;
+  }
+
+  .first__section {
+      padding-bottom: 69.5px;
+      width: 630px;
+  }
+
+  .beverages {
+      padding: 22px 106px;
+      font-size: 18px;
+  }
+
+  .sale {
+      padding: 22px 116px;
+      font-size: 18px;
+  }
+
+  .products {
+      gap: 25%;
+      padding-left: 0;
+  }
+
+  .product__name,
+  .cost {
+      width: 420px;
+      height: 69.5px;
+  }
+
+  .plus {
+      width: 32px;
+      height: 32px;
+  }
+
+  div.swiper-button-next::after {
+      padding: 42px 38px;
+      top: 20px;
+      left: 350px;
   }
 }
 

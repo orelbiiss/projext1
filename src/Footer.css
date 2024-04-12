@@ -33,7 +33,7 @@
   .second__block__text,
   .third__block__text{
     font-family: TildaSansLight;
-    font-size: 18px;
+    font-size: clamp(0.75rem, 0.663rem + 0.38vw, 1.125rem);
   }
 
   .second__block__text:hover{
@@ -158,7 +158,7 @@
   
   .checkbox__label__text{
     font-family: TildaSansLight;
-    font-size: 16px;
+    font-size: clamp(0.75rem, 0.577rem + 0.46vw, 1.125rem);
     padding-left: 15px;
   }
   
@@ -167,6 +167,7 @@
   }
   
   .form__button {
+    display: flex;
     padding: 19px 0;
     width: 100%;
     border-width: 0;
@@ -193,13 +194,12 @@
     border-top: 1px solid var(--accent-color);
     width: 100%;
     font-family: TildaSansLight;
-    font-size: 12px;
+    font-size: clamp(0.75rem, 0.656rem + 0.25vw, 0.938rem);
   }
 
 
 
-  @media screen and (min-width: 1800px) {}
-  @media screen and (min-width: 1600px) {
+  @media screen and (min-width: 1800px) {
     .block__title{
       font-size: 24px;
     }
@@ -213,13 +213,13 @@
       width: 32px;
       height: 32px;
     }
-    .copyright,
-    .checkbox__label__text{
-      font-size: 18px;
-    }
+   
     .email__label{
       font-size: 22px;
     }
+  }
+  @media screen and (min-width: 1500px) and (max-width: 1799px){
+    
   }
 
   @media screen and (max-width: 425px) {

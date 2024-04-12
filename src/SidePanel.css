@@ -1,3 +1,25 @@
+@keyframes slidein {
+    from {
+      margin-left: 100%;
+      width: 300%;
+    }
+  
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }
+
+@keyframes bg{
+    0%{
+        background: transparent;
+        opacity: 0;
+    }
+    100%{
+        background: #0000004d;
+        opacity: 1;
+    }
+}
 
 
 .side__panel{
@@ -15,15 +37,17 @@
     left: 0;
     right: 0;
     width: 100%;
+    animation: slidein 0.7s ease forwards;
 }
 
 .handleClickOutside{
-    background: #0000004d;
     bottom: 0;
     height: 100%;
     position: absolute;
     top: 0;
     width: 100%;
+    animation: bg 0.2s ease 0.7s forwards;
+    animation-direction: normal, reverse;
 }
 
 .content__block{
@@ -101,6 +125,15 @@
     font-size: 20px;
 }
 
+.status__block{
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn__delete__each:not(.active) {
+    display: none;
+  }
+
 .cart-item{
     display: flex;
     padding: 20px 0;
@@ -115,10 +148,55 @@
     background-color:  var(--secondary-fill-color);
 }
 
+.cart-item__content-description{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: calc(100% - 300px);
+}
+
+.item__ingredients,
+.item__volume{
+    font-family: TildaSansLight;
+    font-size: 9px;
+    text-transform: uppercase;
+}
+
+.item__name{
+    font-family: TildaSansSemibold;
+    line-height: 100%;
+    font-size: 18px;
+    padding-bottom: 20px;
+}
+
+.price__selected__product{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+    position: relative;
+    width: 150px;
+    font-family: TildaSansSemibold;
+    line-height: 100%;
+    font-size: 18px;
+}
+
+.price__selected{
+    position: absolute;
+    bottom: 0;
+}
+
+.block__product__quantity__management{
+    display: flex;
+    justify-content: space-between;
+}
+
+
 .product__cards__block,
 .promo__code{
     margin: 0 0 60px;
 }
+
 
 .promo__code{
     width: 100%;
@@ -180,6 +258,7 @@
 
 .total__price{
     font-family: TildaSansSemibold;
+    font-size: clamp(0.75rem, 0.663rem + 0.38vw, 1.125rem);
 }
 
 .total__price__wrapper > span{
@@ -187,10 +266,10 @@
     font-size: 25px;
 }
 
-@media screen and (min-width: 1600px) {
+@media screen and (min-width: 1800px) {
     .text__block__title{
-    font-size: 90px;
-    line-height: 90%;
+        font-size: 90px;
+        line-height: 90%;
     }
     .text__block, .display__area {
         padding: 40px 200px 0;
@@ -202,6 +281,10 @@
         width: 48px;
         height: 48px;
     }
+}
+
+@media screen and (min-width: 1600px) and (max-width: 1799px){
+    
 }
 
 @media screen and (max-width: 660px) {
