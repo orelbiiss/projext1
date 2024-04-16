@@ -58,6 +58,42 @@
   display: none;
 }
 
+
+
+.burger__links{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: absolute;
+  top: 90%;
+  right: -30px;
+  left: 70%;
+  padding: 20px 32px;
+  box-shadow: 0 0 6px var(--accent-color);
+  border-radius: 20px;
+  background-color: #ffffff;
+  z-index: 10;
+  animation: burgerLinksAnimation 0.8s ease-in-out;
+  font-family: TildaSansLight;
+}
+
+@keyframes burgerLinksAnimation{
+  0% {
+    margin-left: 100%;
+    width: 300%;
+  }
+  100% {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+.links{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .icon__basket{
   cursor: pointer;
   border: 0;
@@ -166,6 +202,7 @@
       gap: 2px;
       overflow: hidden;
       border: none;
+      z-index: 11;
   }
   
   .icon__menu__default span,
