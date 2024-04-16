@@ -6,25 +6,28 @@ function PreLoader(){
   const [percent, setPercent] = useState(0);
 
   useEffect(() => {
+
+    // получение всех медиафайлов на странице
     const mediaFiles = document.querySelectorAll('img, video');
     let loadedCount = 0;
 
+    // функция для обработки события загрузки каждого медиафайла
     const handleLoad = () => {
-      // Функция для обработки события загрузки каждого медиафайла
-      loadedCount++; // Увеличиваем счетчик загруженных медиафайлов
+      loadedCount++; 
       const newPercent = ((loadedCount * 100) / mediaFiles.length).toFixed();
+      setPercent(newPercent);
 
-      setPercent(newPercent); // Устанавливаем новый процент загрузки
       if (loadedCount === mediaFiles.length){
         setPercent(100)
         setshowPreLoader('loading__complete')
       }}
     
+    // Добавление обработчика загрузки к каждому медиафайлу
     Array.from(mediaFiles).forEach(file => {
       file.onload = handleLoad;
     });
 
-    // Очищаем обработчики загрузки при размонтировании компонента
+    // oчищаем обработчики загрузки при размонтировании компонента
     return () => {
       Array.from(mediaFiles).forEach(file => {
         file.onload = null;

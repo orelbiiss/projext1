@@ -1,52 +1,50 @@
 import Header from "../components/Header";
 import '../ProductPage.css'
 import SidePanel from '../components/SidePanel'
+import catalog from './Catalog.js'
+import ProductSwiper from '../components/ProductSwiper.js'
+import { useState } from "react";
+import  useCart  from './useCart';
 
 function ProductPage(){
-
+    const { handleAddToCart } = useCart()
 
     return(
         <>
             <Header/>
-            <MainBlock/>
+            <MainBlock handleAddToCart = {handleAddToCart}/>
             <SidePanel />
         </>
     )
 }
 
-function MainBlock(){
+function MainBlock({ handleAddToCart }){
+
+    const [addToCartLabel, setaddToCartLabel] = useState(false)
 
     const product__information = [
-        {
-            name: "Cок холодного отжима Citrus 3",
+        {   
+            name: "СОК ХОЛОДНОГО ОТЖИМА CITRUS 3",
+            imgSrc1x: "/img/2sj4i.png",
+            imgSrc2x: "/img/2x/2sj4i__2x.png",
+            webpSrc1x: "/img/webp/2sj4i.webp",
+            webpSrc2x: "/img/webp/2sj4i__2x.webp",
+            volumes: [500, 1000, 1500],
+            prices: [100, 150, 200],
             ingredients: "грейпфрут свежий, мята свежая",
+            quantity: 3,
+            id: "2sj4p",
             productDescription: "Citrus – соки богаты витамином С, стимулируют обмен веществ и мобилизуют силы.",
-            price:"320",
-            ratingValue:"4.8",
-            volumes: [
-                {
-                    volume: "132"
-                },
-                {
-                    volume: "132"
-                }, 
-                {
-                    volume: "133"
-                }
-            ]
+            ratingValue:"4.8"
         }
     ]
 
-    const cups = product__information[0].volumes.map((volumeObj, i) => {
-        return (
-            <div className="volumes">
-                <img src="/img/bottle__svg.svg"></img>
-                <p className="volumes_p"  key={i}>{volumeObj.volume}</p>
-            </div>
-        )
-    })
+    let [CurrentVolume, setCurrentVolume] = useState(0);
 
-    
+    // выбор объема товара
+    const handleVolumeClick = (volume) => {
+        setCurrentVolume(volume)
+    }
 
     return(
         <>
@@ -66,25 +64,39 @@ function MainBlock(){
                     </picture>
                 </div>
                 <div className="product__info__section">
-                    <p className="info__section__title">{product__information[0].name}</p>
-                    <p className="ingredients">Состав: {product__information[0].ingredients}</p>
-                    <div className="line__volume">
-                        {cups}
-                    </div>
-                    <p className="product__description">{product__information[0].productDescription}</p>
-                    <div className="price__star__rating__container">
-                        <div className="price">
-                            <img src="img/wallet.svg"></img>
-                            <p>{product__information[0].price}₽</p>
+                    <div className="product__details">
+                        <div>
+                            <p className="info__section__title">{product__information[0].name}</p>
+                            <p className="ingredients">Состав: {product__information[0].ingredients}</p>
+                            <div className="line__volume">
+                                {product__information[0].volumes.map((volume, i) => {
+                                    return (
+                                        <div className="volumes"  key={i} onClick={() => handleVolumeClick(volume)}>
+                                            <img src="/img/bottle__svg.svg"></img>
+                                            <p className="volumes_p">{ volume }</p>
+                                        </div>
+                                )})}
+                            </div>
                         </div>
-                        <div className="star__rating">
-                            <img src="img/Star_light.svg"></img>
-                            <p className="rating__value">{product__information[0].ratingValue}</p>
+                        <p className="product__description">{product__information[0].productDescription}</p>
+                        <div className="price__star__rating__container">
+                            <div className="price">
+                                <img src="img/wallet.svg"></img>
+                                <p>{product__information[0].prices[product__information[0].volumes.indexOf(CurrentVolume)]} ₽</p>
+                            </div>
+                            <div className="star__rating">
+                                <img src="img/Star_light.svg"></img>
+                                <p className="rating__value">{product__information[0].ratingValue}</p>
+                            </div>
                         </div>
+                        <button className="btn__cart__add" onClick={() => handleAddToCart(product__information[0], CurrentVolume)}>
+                            {addToCartLabel ? "Добавить в корзину" : "Добавить еще"}
+                        </button>
                     </div>
-                    <button >
-
-                    </button>
+                    <div className="product__swiper">
+                        <p>Вам может понравиться: </p>
+                        <ProductSwiper/>
+                    </div>
                 </div> 
             </div>
         </>

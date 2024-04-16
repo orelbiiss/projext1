@@ -1,0 +1,44 @@
+.swipe__potentials{
+    height: 180px;
+    padding: 20px 5px;
+    width: 100%;
+}
+
+.potential__choices{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: 0 4px 8.8px rgba(0, 0, 0, 0.15);
+    padding: 10px 21px;
+}
+
+.potential__choices__img{
+    height: 100%;
+}
+
+.potential__choices__info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 18px;
+    height: 80%;
+}
+
+.potential__choices__info-name{
+    font-size: 12px;
+    font-family: TildaSansSemibold;
+    margin-bottom: 5px;
+    line-height: 100%;
+}
+
+.potential__choices__info-volume{
+    font-size: 10px;
+    font-family: TildaSansLight;
+
+}
+
+.potential__choices__info-price{
+    font-size: 10px;
+    font-family: TildaSansSemibold;
+}

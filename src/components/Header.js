@@ -17,6 +17,9 @@ function Header() {
 
   const isSmallScreen = useMediaQuery('(max-width: 768px)');
 
+
+  // Функция для открытия/закрытия боковой панели 
+  //или перехода на страницу корзины в зависимости от размера экрана
   function togglePanel() {
     if (isSmallScreen) {
       navigate('/cart'); // Переход на страницу корзины
@@ -24,6 +27,7 @@ function Header() {
       setIsPanelOpen(!isPanelOpen); // Открытие SidePanel
     }
   }
+  console.log(isPanelOpen)
   
   function handleMenuButtonClick(){
       if(IsMenuOpen === "icon__menu__cross"){
@@ -83,9 +87,9 @@ function Header() {
         <li className="hdr__text">
           <Link to="/sale">Акции</Link>
         </li>
-        <a href="/">
+        <Link to="/">
           <img className="logo" src='/img/logo.svg' alt="Лого" title='logo' />
-        </a>
+        </Link>
         <li className="hdr__text">
           <Link to="/aboutUs">О нас</Link>
         </li>
@@ -96,7 +100,7 @@ function Header() {
       <div className="basket__menu__icons">
         <img className="icon__basket" src='/img/basket.svg' alt="корзина" onClick={togglePanel}/>
         <div className={"count" + (cart.length ? ' active' : '')} onClick={togglePanel}>
-          {cart.length}
+          {cart.reduce((acc, item) => acc + item.inBasket, 0)}
         </div>
         <button 
           onClick = {handleMenuButtonClick}

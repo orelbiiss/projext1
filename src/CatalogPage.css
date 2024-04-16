@@ -6,6 +6,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    min-height: 570px;
     margin: 0 5%;
   }
   
@@ -39,19 +40,28 @@
   .bottle{
     display: flex;
     justify-content: center;
-    align-items: end;
     width: 100%;
     height: 80%;
   }
   
+  .section__link{
+    display: flex;
+    align-items: end;
+    height: 100%;
+  }
+
   .img__bottle{
-    height: 92%;
+    height: 90%;
+    transition: 0.2s ease;
   }
   
-  .img__bottle:hover{
+  .img__bottle__hover{
+    transition: 0.2s ease;
+    height: 90%;
+    transform: scale(1.05);
     margin-bottom: 2px;
   }
-  
+
   .section__name{
     display: flex;
     align-items: center;
@@ -62,14 +72,15 @@
   }
 
   .name{
-    transition: 0.2s ease;
-    width: 300px;
+    transition: 0.3s ease;
   }
-  
-  .name:hover{
+
+  .name__hover{
+    width: 180px;
     color: var(--accent-color);
     transform: scale(1.1);
     font-family: TildaSansMedium;
+    transition: 0.2s ease;
   }
   
   
@@ -192,15 +203,23 @@
     bottom: 0;
   }
 
-  .link__cover:hover .position__name{
-    color: var(--accent-color) !important;
+  .position__name__hover{
+    display: flex;
+    align-items: center;
+    font-size: 14.1px;
+    font-family: TildaSansMedium;
+    color: var(--accent-color);
+    width: 100%;
+    line-height: 13px;
+    height: 27px;
+    transition: 0.2s ease;
+    margin: 8px 0;
   }
   
   .volume__section{
     display: flex;
     gap: 10px;
   }
-  
   
   .volume{
     border: 1px solid #7F7F7F;
@@ -296,10 +315,6 @@
   
   .section__name{
       font-size: 17px;
-  }
-  
-  .name:hover{
-      transform: scale(1.1);
   }
 
   .page__nav__wrapper {

@@ -21,7 +21,6 @@
     }
 }
 
-
 .side__panel{
     display: none;
     right: -50%; 
@@ -115,8 +114,14 @@
 
 /*  */
 
-.basket__text{
+.status__block{
+    display: flex;
     margin: 0 0 15px;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.basket__text{
     font-size: 35px;
     font-family: TildaSansSemibold;
 }
@@ -125,14 +130,18 @@
     font-size: 20px;
 }
 
-.status__block{
-    display: flex;
-    justify-content: space-between;
-}
-
 .btn__delete__each:not(.active) {
     display: none;
   }
+.btn__delete__each{
+    border: 0;
+    color: #CACACA;
+    transition: 0.2s ease;
+}
+
+.btn__delete__each:hover{
+    color: var(--text-color);
+}
 
 .cart-item{
     display: flex;
@@ -152,7 +161,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: calc(100% - 300px);
+    width: calc(100% - 280px);
+    margin: 15px;
 }
 
 .item__ingredients,
@@ -160,6 +170,7 @@
     font-family: TildaSansLight;
     font-size: 9px;
     text-transform: uppercase;
+    padding-bottom: 8px;
 }
 
 .item__name{
@@ -175,7 +186,7 @@
     justify-content: space-between;
     align-items: end;
     position: relative;
-    width: 150px;
+    width: 120px;
     font-family: TildaSansSemibold;
     line-height: 100%;
     font-size: 18px;
@@ -188,8 +199,26 @@
 
 .block__product__quantity__management{
     display: flex;
+    width: 100%;
+    position: relative;
     justify-content: space-between;
 }
+
+.main__buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.btn-remove__active,
+.btn-add__item,
+.btn__delete__each {
+    cursor: pointer;
+}
+
+
+
 
 
 .product__cards__block,

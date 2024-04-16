@@ -2,20 +2,21 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import UpBtn from '../components/UpBtn';
 import '../CatalogPage.css'
-import React, { useContext, useState, useEffect} from 'react';
-import { CartContext } from './CartContext';
+import React, { useState } from 'react';
 import  useCart  from './useCart';
 import { Link } from 'react-router-dom';
+import { catalog } from '../CatalogData';
 
 
 
 function Catalog() {
-  const { addToCart } = useCart()
+  const { handleAddToCart } = useCart()
   return (
     <>
       <Header />
       <PageNav />
-      <ProductCatalog addToCart={addToCart} />
+      <ProductCatalog catalog={catalog}
+                      handleAddToCart={handleAddToCart}/>
       <Footer />
       <UpBtn />
     </>
@@ -52,7 +53,10 @@ function PageNav(){
   ];
 
   const linkJsx = link.map((elem, i) => {
-    return <NavBlock name={elem.name} className={elem.className} id={elem.id} key={i}/>
+    return <NavBlock name={elem.name} 
+                     className={elem.className} 
+                     id={elem.id} 
+                     key={i}/>
   })
 
   return (
@@ -67,33 +71,38 @@ function PageNav(){
 
 // Компонент навигации по странице
 function NavBlock({name, className, id}){
+  const [ animateOnHover, setanimateOnHover] = useState(false)
   return(
     <div className={className}>
-      <picture className="bottle">
+      <picture className='bottle'>
         <source
-          className="img__bottle"
           media="(max-width: 768px)"
           type="image/webp"
           srcSet={`img/webp/small__${className}.webp 1x, img/webp/small__${className}__2x.webp 2x`}
         />
         <source
-          className="img__bottle"
           media="(max-width: 768px)"
           srcSet={`img/small__${className}.png 1x, img/2x/small__${className}__2x.png 2x`}
         />
         <source
-          className="img__bottle"
           type="image/webp"
           srcSet={`img/webp/middle__${className}.webp 1x, img/webp/middle__${className}__2x.webp 2x`}
         />
-        <img
-          className="img__bottle"
-          srcSet={`img/middle__${className}.png 1x, img/2x/middle__${className}__2x.png 2x`}
-          alt={name}
-        />
+        <a href={id} className='section__link'>
+          <img
+            className={animateOnHover ? 'img__bottle__hover' : 'img__bottle'}
+            onMouseEnter={() => setanimateOnHover(true)}
+            onMouseLeave={() => setanimateOnHover(false)}
+            srcSet={`img/middle__${className}.png 1x, img/2x/middle__${className}__2x.png 2x`}
+            alt={name}
+          />
+        </a>
+        
       </picture>
       <div className="section__name">
-        <a href={id} className="name">
+        <a href={id} className={animateOnHover ? 'name__hover' : 'name'}
+        onMouseEnter={() => setanimateOnHover(true)}
+        onMouseLeave={() => setanimateOnHover(false)}>
           {name}
         </a>
       </div>
@@ -101,270 +110,24 @@ function NavBlock({name, className, id}){
   )
 }
 
-function ProductCatalog({ addToCart }) {
-
-  const catalog = [
-    {
-      id: 'section__water',
-      title: "Вода",
-      cards: [
-        {
-          name: "Zer0P Вода негазированная 1",
-          imgSrc1x: "/img/middle__water.png",
-          imgSrc2x: "/img/2x/middle__water__2x.png",
-          webpSrc1x: "/img/webp/middle__water.webp",
-          webpSrc2x: "/img/webp/middle__water__2x.webp",
-          volumes: [500, 1000, 1500],
-          prices: [100, 150, 200],
-          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          sale: 20,
-          quantity: 3,
-          id: "1sw1p"
-        },
-        {
-          name: "Zer0P Вода негазированная 2",
-          imgSrc1x: "/img/middle__water.png",
-          imgSrc2x: "/img/2x/middle__water__2x.png",
-          webpSrc1x: "/img/webp/middle__water.webp",
-          webpSrc2x: "/img/webp/middle__water__2x.webp",
-          volumes: [500, 1000, 1500],
-          prices: [100, 150, 200],
-          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 3,
-          id: "1sw2p"
-        },
-        {
-          name: "Zer0P Вода негазированная 3",
-          imgSrc1x: "/img/middle__water.png",
-          imgSrc2x: "/img/2x/middle__water__2x.png",
-          webpSrc1x: "/img/webp/middle__water.webp",
-          webpSrc2x: "/img/webp/middle__water__2x.webp",
-          volumes: [500, 1000, 1500],
-          prices: [100, 150, 200],
-          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 3,
-          id: "1sw3p"
-        },
-        {
-          name: "Foco Кокосовая вода",
-          imgSrc1x: "/img/foco__coconut__water.png",
-          imgSrc2x: "/img/2x/foco__coconut__water__2x.png",
-          webpSrc1x: "/img/webp/foco__coconut__water.webp",
-          webpSrc2x: "/img/webp/foco__coconut__water__2x.webp",
-          volumes: [500, 1000, 1500],
-          prices: [100, 150, 200],
-          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 3,
-          id: "1sw4p"
-        },
-      ],
-    },
-    {
-      id: 'section__juice',
-      title: "Соки",
-      cards: [
-        {
-          name: "CОК АПЕЛЬСИНОВЫЙ СВЕЖЕВЫЖАТЫЙ",
-          imgSrc1x: "/img/2sj1i.png",
-          imgSrc2x: "/img/2x/2sj1i__2x.png",
-          webpSrc1x: "/img/webp/2sj1i.webp",
-          webpSrc2x: "/img/webp/2sj1i__2x.webp",
-          volumes: [500, 1000, 1500],
-          prices: [100, 150, 200],
-          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 3,
-          id: "2sj1p"
-        },
-        {
-          name: "СОК ВИШНЕВЫЙ СВЕЖЕВЫЖАТЫЙ",
-          imgSrc1x: "/img/2sj2i.png",
-          imgSrc2x: "/img/2x/2sj2i__2x.png",
-          webpSrc1x: "/img/webp/2sj2i.webp",
-          webpSrc2x: "/img/webp/2sj2i__2x.webp",
-          volumes: [500, 1000, 1500],
-          prices: [100, 150, 200],
-          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 3,
-          id: "2sj2p"
-        },
-        {
-          name: "ITO NOEN СОК ЮДЗУ 100%я",
-          imgSrc1x: "/img/2sj3i.png",
-          imgSrc2x: "/img/2x/2sj3i__2x.png",
-          webpSrc1x: "/img/webp/2sj3i.webp",
-          webpSrc2x: "/img/webp/2sj3i__2x.webp",
-          volumes: [500, 1000, 1500],
-          prices: [100, 150, 200],
-          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 3,
-          id: "2sj3p"
-        },
-        {
-          name: "СОК ХОЛОДНОГО ОТЖИМА CITRUS 3",
-          imgSrc1x: "/img/2sj4i.png",
-          imgSrc2x: "/img/2x/2sj4i__2x.png",
-          webpSrc1x: "/img/webp/2sj4i.webp",
-          webpSrc2x: "/img/webp/2sj4i__2x.webp",
-          volumes: [500, 1000, 1500],
-          prices: [100, 150, 200],
-          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 3,
-          id: "2sj4p"
-        },
-      ],
-    },
-    {
-      id: 'section__fruit__drink',
-      title: "Морсы",
-      cards: [
-        {
-          name: "МОРС ИЗ ЧЕРНОЙ СМОРОДИНЫ",
-          imgSrc1x: "/img/3sf-d1j.png",
-          imgSrc2x: "/img/2x/3sf-d1j__2x.png",
-          webpSrc1x: "/img/webp/3sf-d1j.webp",
-          webpSrc2x: "/img/webp/3sf-d1j__2x.webp",
-          volumes: [500, 1000, 1500],
-          prices: [100, 150, 200],
-          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 3,
-          id: "3sf-d1p"
-        },
-        {
-          name: "МОРС ИЗ ОБЛЕПИХИ",
-          imgSrc1x: "/img/3sf-d2j.png",
-          imgSrc2x: "/img/2x/3sf-d2j__2x.png",
-          webpSrc1x: "/img/webp/3sf-d2j.webp",
-          webpSrc2x: "/img/webp/3sf-d2j__2x.webp",
-          volumes: [500, 1000, 1500],
-          prices: [100, 150, 200],
-          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 3,
-          id: "3sf-d2p"
-        },
-        {
-          name: "МОРС ИЗ БРУСНИКИ",
-          imgSrc1x: "/img/3sf-d3j.png",
-          imgSrc2x: "/img/2x/3sf-d3j__2x.png",
-          webpSrc1x: "/img/webp/3sf-d3j.webp",
-          webpSrc2x: "/img/webp/3sf-d3j__2x.webp",
-          volumes: [500, 1000, 1500],
-          prices: [100, 150, 200],
-          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 3,
-          id: "3sf-d3p"
-        },
-        {
-          name: "МОРС ИЗ КЛЮКВЫ",
-          imgSrc1x: "/img/3sf-d4j.png",
-          imgSrc2x: "/img/2x/3sf-d4j__2x.png",
-          webpSrc1x: "/img/webp/3sf-d4j.webp",
-          webpSrc2x: "/img/webp/3sf-d4j__2x.webp",
-          volumes: [500, 1000, 1500],
-          prices: [100, 150, 200],
-          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 3,
-          id: "3sf-d4p"
-        },
-      ],
-    },
-    {
-      id: 'section__smoothie',
-      title: "Смузи",
-      cards: [
-        {
-          name: "CLEAR BARN СМУЗИ HEY, МИНЬОН!",
-          imgSrc1x: "/img/4ss1i.png",
-          imgSrc2x: "/img/2x/4ss1i__2x.png",
-          webpSrc1x: "/img/webp/4ss1i.webp",
-          webpSrc2x: "/img/webp/4ss1i__2x.webp",
-          volumes: [500, 1000, 1500],
-          prices: [100, 150, 200],
-          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 3,
-          id: "4ss1p"
-        },
-        {
-          name: "CLEAR BARN СМУЗИ COSMOS",
-          imgSrc1x: "/img/4ss2i.png",
-          imgSrc2x: "/img/2x/4ss2i__2x.png",
-          webpSrc1x: "/img/webp/4ss2i.webp",
-          webpSrc2x: "/img/webp/4ss2i__2x.webp",
-          volumes: [500, 1000, 1500],
-          prices: [100, 150, 200],
-          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 3,
-          id: "4ss2p"
-        },
-        {
-          name: "CLEAR BARN СМУЗИ MR. FLANINGO ",
-          imgSrc1x: "/img/4ss3i.png",
-          imgSrc2x: "/img/2x/4ss3i__2x.png",
-          webpSrc1x: "/img/webp/4ss3i.webp",
-          webpSrc2x: "/img/webp/4ss3i__2x.webp",
-          volumes: [500, 1000, 1500],
-          prices: [100, 150, 200],
-          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 3,
-          id: "4ss3p"
-        },
-        {
-          name: "CLEAR BARN СМУЗИ SUPER GIRL",
-          imgSrc1x: "/img/4ss4i.png",
-          imgSrc2x: "/img/2x/4ss4i__2x.png",
-          webpSrc1x: "/img/webp/4ss4i.webp",
-          webpSrc2x: "/img/webp/4ss4i__2x.webp",
-          volumes: [500, 1000, 1500],
-          prices: [100, 150, 200],
-          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 3,
-          id: "4ss4p"
-        },
-      ],
-    },
-    {
-      id: 'section__sport__drink',
-      title: "Спортивные напикти",
-      cards: [
-        {
-          name: "ИЗОТОНИК POWERADE",
-          imgSrc1x: "/img/5ss-d1i.png",
-          imgSrc2x: "/img/2x/5ss-d1i__2x.png",
-          webpSrc1x: "/img/webp/5ss-d1i.webp",
-          webpSrc2x: "/img/webp/5ss-d1i__2x.webp",
-          volumes: [500, 1000, 1500],
-          prices: [100, 150, 200],
-          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 3,
-          id: "5ss-d1p"
-        },
-        {
-          name: "ГИПОТоНИЧЕСКИЙ НАПИТОК",
-          imgSrc1x: "/img/5ss-d2i.png",
-          imgSrc2x: "/img/2x/5ss-d2i__2x.png",
-          webpSrc1x: "/img/webp/5ss-d2i.webp",
-          webpSrc2x: "/img/webp/5ss-d2i__2x.webp",
-          volumes: [500, 1000, 1500],
-          prices: [100, 150, 200],
-          ingredients: "djdjdjdjdjdjdjdjdjdjdjd",
-          quantity: 3,
-          id: "5ss-d2p"
-        },
-      ],
-    },
-  ];
+function ProductCatalog({ catalog, handleAddToCart }) {
 
   const sections = catalog.map((elem, i) => {
-  return <Section id={elem.id} title={elem.title} cardsData={elem.cards} addToCart={addToCart}  key={i}/>;
+  return <Section id={elem.id} 
+                  title={elem.title} 
+                  cardsData={elem.cards} 
+                  handleAddToCart={handleAddToCart}  
+                  key={i}/>;
   })
 
   return(<div className='catalog'>{sections}</div>)
 }
 
-function Section({ title, cardsData, id, addToCart }) {
-  const cards = cardsData.map((elem, i) => {
+function Section({ title, cardsData, id, handleAddToCart }) {
+  const cards = cardsData.map((elem) => {
     return <Card item={elem} 
-                 key={i}
-                 addToCart={addToCart} 
+                 key={elem.id}
+                 handleAddToCart={handleAddToCart} 
                 />;
   })
   return (
@@ -377,29 +140,26 @@ function Section({ title, cardsData, id, addToCart }) {
   );
 }
 
-function Card({ item, addToCart }){
-  
+function Card({ item, handleAddToCart }){
+
+  const [applyHoverEffect, setapplyHoverEffect] = useState(false)
+
   let [CurrentVolume, setCurrentVolume] = useState(0);
 
  // выбор объема товара
   const handleVolumeClick = (volume) => {
     setCurrentVolume(volume)
-    console.log(volume)
   }
-
-  const handleAddToCart = () => {
-    // Вызываем функцию addToCart и передаем в нее товар item
-    addToCart(item, 
-            CurrentVolume);
-  };
 
   // цена для выбранного объема товара
   const currentPriceIndex = item.volumes.indexOf(CurrentVolume);
   const currentPrice = item.prices[currentPriceIndex];
   
   return(
-    <div className="card">
-      <div className="main__block">
+    <div className='card'>
+      <div className='main__block'
+      onMouseEnter={() => setapplyHoverEffect(true)}
+      onMouseLeave={() => setapplyHoverEffect(false)}>
         <img src="img/Star.svg" alt="" />
         <picture>
           <source
@@ -415,19 +175,22 @@ function Card({ item, addToCart }){
         </picture>
         <p className="product__volume">0,75л</p>
         <div className="icon__add">
-          <img className="icon" src='/img/add__to__basket.svg' onClick={handleAddToCart} ></img>
+          <img className="icon" src='/img/add__to__basket.svg' onClick={() => handleAddToCart(item, CurrentVolume)} ></img>
         </div>
-        <Link to='/product__page' className='link__cover'></Link>
+        <Link to='/product__page' className= 'link__cover'></Link>
       </div>
       <div className="volume__section">
-        {item.volumes.map((volume, i) => {
+        {item.volumes.map((volume, index) => {
           return(
-            <p className={'volume' + (volume !== CurrentVolume ? ' active' : '')} onClick={() => handleVolumeClick(volume) } >
+            <p key={index} className={'volume' + (volume !== CurrentVolume ? ' active' : '')} onClick={() => handleVolumeClick(volume)}>
             {volume}ml </p>
           )
         })}
       </div>
-      <a href="/product__page" className="position__name">
+      <a href="/product__page" className={applyHoverEffect ? 'position__name__hover' : 'position__name'}
+        onMouseEnter={() => setapplyHoverEffect(true)}
+        onMouseLeave={() => setapplyHoverEffect(false)}
+      >
         {item.name.substring(0, 1).toUpperCase()+ item.name.substring(1, item.name.length).toLowerCase()}
       </a>
       <p className="product__price">{CurrentVolume !== 0 ? ` ${currentPrice}₽ ` : "от 100 ₽"}</p>

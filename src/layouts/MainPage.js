@@ -2,6 +2,7 @@ import Header from '../components/Header';
 import "../MainPage.css";  
 import React, { useContext, useState} from 'react';
 import { CartContext } from './CartContext';
+import  useCart  from './useCart';
 
 
 
@@ -10,16 +11,16 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 
 function MainPage() {
+  const { addToCart } = useCart()
     return (
       <>
         <Header />
-        <Main />
+        <Main addToCart={addToCart} />
       </>
     )
 }
 
-function Main(){
-  
+function Main({ addToCart }){
   return(
     <main className="oblast">
       <section className="first__section">
@@ -60,30 +61,34 @@ function Main(){
         </a>
       </section>
       <section className="second__section">
-      <div className='product__1024px'>
-        <div className="product__img__1024px">
-          <picture>
-            <source
-              className="img__1024px"
-              type="image/webp"
-              srcSet="/img/webp/Напитки.webp 1x, /img/webp/Напитки__2x.webp 2x"
-            />
-            <img
-              className="img__1024px"
-              srcSet="/img/Напитки.png 1x,
-                        /img/2x/Напитки__2x.png 2x"
-              alt="Вода негазировананая"/>
-          </picture>
+        <div className='product__1024px'>
+          <div className="product__img__1024px">
+            <picture>
+              <source
+                className="img__1024px"
+                type="image/webp"
+                srcSet="/img/webp/Напитки.webp 1x, /img/webp/Напитки__2x.webp 2x"
+              />
+              <img
+                className="img__1024px"
+                srcSet="/img/Напитки.png 1x,
+                          /img/2x/Напитки__2x.png 2x"
+                alt="Вода негазировананая"/>
+            </picture>
+          </div>
         </div>
-      </div>
-        <InfoProduct/>
+        <div class="square">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <InfoProduct addToCart={addToCart}/>
       </section>
     </main>
   )
 }
 
-function InfoProduct() {
-  const {cart, setCart} = useContext(CartContext);
+function InfoProduct({ addToCart }) {
 
   const info = [
     {
@@ -122,10 +127,8 @@ function InfoProduct() {
   ];
 
   const SwiperSslide = info.map((elem, i) => {
-
     const handleAddToCart = () => {
-      setCart(cart.concat([elem]));
-      console.log(cart);
+      addToCart(elem);
     };
 
     return(
@@ -151,18 +154,18 @@ function InfoProduct() {
             <img className="plus" src='/img/add__ring.svg' onClick={handleAddToCart}/>
           </div>
         </div>
-        </SwiperSlide>
-      );
-    });
+      </SwiperSlide>
+    );
+  });
   
     return (
       <Swiper 
-      slidesPerView = {1.52}
-      loop={true}
-      navigation={true}
-      modules={[Navigation]}
-      className="swiper__main__page">
-          {SwiperSslide}
+        slidesPerView = {1.55}
+        loop={true}
+        navigation={true}
+        modules={[Navigation]}
+        className="swiper__main__page">
+        {SwiperSslide}
       </Swiper>
     );
   }
