@@ -50,13 +50,13 @@ function EmptyCart({ onClose }) {
             <p className='text__block__title'>ничего нет...</p>  
             <p className='text__description'>Загляните в наш <a className='accent__text'>каталог товаров</a>, чтобы открыть для себя разнообразие напитков</p> 
           </div> 
-          <div className='display__area'>
-            <Link to="/catalog" className='btn__catalog' onClick={onClose}>Перейти к напиткам</Link>
-          </div>
         </div>
         <div className="product__swiper">
-            <p>Вам может понравиться: </p>
+            <p>вам может понравиться: </p>
             <ProductSwiper/>
+        </div>
+        <div className='display__area'>
+          <Link to="/catalog" className='btn__catalog' onClick={onClose}>Перейти к поиску напитков</Link>
         </div>
       </div>
     </>

@@ -1,12 +1,20 @@
+.product__swiper{
+    font-family: TildaSansSemiBold;
+    font-size: 25px;
+}
+
+.product__swiper > p{
+    padding: 0 5px;
+}
+
 .swipe__potentials{
-    height: 180px;
-    padding: 20px 5px;
+    height: 160px;
+    padding: 20px 5px !important;
     width: 100%;
 }
 
 .potential__choices{
-    display: flex;
-    justify-content: space-between;
+    display: flex !important;
     align-items: center;
     border-radius: 20px;
     box-shadow: 0 4px 8.8px rgba(0, 0, 0, 0.15);
@@ -43,7 +51,24 @@
     font-family: TildaSansSemibold;
 }
 
+
+
+.add__to__cart-btn{
+    width: 100%;
+    padding: 25px;
+    margin: 50px 0;
+    border-radius: 20px;
+}
+
 @media screen and (min-width: 1800px){
+    .swipe__potentials {
+        height: 210px;
+        padding: 20px 5px;
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 1500px) and (max-width: 1799px){
     .swipe__potentials {
         height: 210px;
         padding: 20px 5px;

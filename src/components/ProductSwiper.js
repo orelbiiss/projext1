@@ -1,6 +1,8 @@
 import { catalog } from '../CatalogData';
 import { Link } from 'react-router-dom';
 import '../ProductSwiper.css'
+import { useMediaQuery } from 'usehooks-ts'
+
 
 import React, { useRef, useState } from 'react';
 // Import Swiper React components
@@ -24,6 +26,7 @@ function shuffle(){
     return shuffleCatalog
 }
 function ProductSwiper({ catalog }){
+    const isSmallScreen = useMediaQuery('(min-width: 1600px)');
 
     const shuffledCatalog = shuffle(catalog);
     const randomProducts = shuffledCatalog.slice(0, 6);
@@ -45,7 +48,17 @@ function ProductSwiper({ catalog }){
       
   return (
     <>
-    
+      {isSmallScreen ?
+      <Swiper
+        slidesPerView = {3}
+        spaceBetween={20}
+        loop={true}
+        navigation={true}
+        modules={[Navigation]}
+        className="swipe__potentials"
+      >
+        {swiper}
+      </Swiper> : 
       <Swiper
         slidesPerView = {2}
         spaceBetween={30}
@@ -55,7 +68,7 @@ function ProductSwiper({ catalog }){
         className="swipe__potentials"
       >
         {swiper}
-      </Swiper>
+      </Swiper>}
     </>
   );
 }

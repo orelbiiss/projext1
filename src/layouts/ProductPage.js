@@ -17,7 +17,7 @@ function ProductPage(){
 }
 
 function MainBlock(){
-
+  
     const [addToCartLabel, setaddToCartLabel] = useState(false)
 
     const product__information = [
@@ -81,7 +81,7 @@ function MainBlock(){
                         <div className="price__star__rating__container">
                             <div className="price">
                                 <img src="img/wallet.svg"></img>
-                                <p>{product__information[0].prices[product__information[0].volumes.indexOf(CurrentVolume)]} ₽</p>
+                                <p>{product__information[0].prices[product__information[0].volumes.indexOf(CurrentVolume)] ?? product__information[0].prices[0]} ₽</p>
                             </div>
                             <div className="star__rating">
                                 <img src="img/Star_light.svg"></img>
@@ -93,7 +93,7 @@ function MainBlock(){
                         </button>
                     </div>
                     <div className="product__swiper">
-                        <p>Вам может понравиться: </p>
+                        <p>вам может понравиться: </p>
                         <ProductSwiper/>
                     </div>
                 </div> 

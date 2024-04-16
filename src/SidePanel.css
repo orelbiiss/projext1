@@ -84,14 +84,9 @@
 .main__content__cart{
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 100%;
     justify-content: space-around;
     height: 100%;
-}
-
-.text__block,
-.display__area{
-    margin-top: 40px;
 }
 
 .text__block__title{
@@ -119,6 +114,11 @@
     border-radius: 100px;
     color: var(--primary-fill-color);
     text-transform: uppercase;
+}
+
+.display__area{
+    display: flex;
+    width: 100%;
 }
 
 /*  */
