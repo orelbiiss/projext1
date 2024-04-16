@@ -121,26 +121,23 @@
 
 @media screen and (min-width: 1800px){
 
-  .navigation__links{
-    font-size: 22px;
-  }
-
+ 
   .icon__basket {
     width: 21px;
     height: 30px;
   }
 
   .icon__tg, .icon__vk, .icon__wa{
-    width: 21px;
-    height: 30px;
+    width: 25px;
+    height: 34px;
   }
 
   .count{
-    top: 28px;
-    right: -10px;
-    font-size: 12px;
-    width: 25px;
-    height: 25px;
+    top: 20px;
+    right: -11px;
+    font-size: 10px;
+    width: 19px;
+    height: 19px;
   }
 }
 

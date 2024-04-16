@@ -244,20 +244,17 @@
 }
 
 @media screen and  (min-width: 1800px){
-  .name{
-    font-size: 22px;
-  }
   .promotion__text,
   .set__subtitle,
   .set__price > p{
-    font-size: 33px;
+    font-size: 22px;
   }
 
   .promotion__deadline{
-    font-size: 18px;
+    font-size: 15px;
   }
   .set__description__container{
-    font-size: 22px;
+    font-size: 18px;
   }
 
   .triple__block{

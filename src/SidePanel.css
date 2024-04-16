@@ -63,6 +63,7 @@
     box-sizing: border-box;
     position: relative;
     padding: 80px 60px;
+    height: 100%;
 }
 
 .close__btn{
@@ -78,6 +79,14 @@
 
 .close__btn:hover{
     transform: scale(1.1) rotate(90deg);
+}
+
+.main__content__cart{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    justify-content: space-around;
+    height: 100%;
 }
 
 .text__block,
@@ -211,6 +220,10 @@
     width: 100%;
 }
 
+.block__product__quantity__management > img{
+    cursor: pointer;
+}
+
 .btn-remove__active,
 .btn-add__item,
 .btn__delete__each {
@@ -296,19 +309,24 @@
 }
 
 @media screen and (min-width: 1800px) {
-    .text__block__title{
-        font-size: 90px;
-        line-height: 90%;
-    }
-    .text__block, .display__area {
-        padding: 40px 200px 0;
-    }
-    .text__description{
-        font-size: 22px;
-    }
     .close__btn{
-        width: 48px;
-        height: 48px;
+        width: 34px;
+        height: 34px;
+    }
+
+    .cart-item__img-wrapper {
+        width: 200px;
+        height: 200px;
+    }
+
+    .cart-item__img-wrapper {
+        width: 170px;
+    }
+    .cart-item__content-description {
+        width: calc(100% - 370px);
+    }
+    .item__ingredients, .item__volume {
+        font-size: 11px;
     }
 }
 

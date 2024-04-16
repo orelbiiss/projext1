@@ -2,7 +2,6 @@ import Header from '../components/Header';
 import "../MainPage.css";  
 import React, { useContext, useState} from 'react';
 import { CartContext } from './CartContext';
-import  useCart  from './useCart';
 
 
 
@@ -11,11 +10,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 
 function MainPage() {
-  const { addToCart } = useCart()
     return (
       <>
         <Header />
-        <Main addToCart={addToCart} />
+        <Main />
       </>
     )
 }
@@ -36,13 +34,6 @@ function Main({ addToCart }){
             заботу о вас. Наш ассортимент включает свежие соки, натуральные
             безалкогольные коктейли и другие напитки, созданные для удовлетворения
             ваших вкусовых предпочтений.
-            <br />
-            <span className="dop__text">
-              В нашем магазине мы также уделяем особое внимание экологической
-              ответственности и устойчивому производству. Все наши упаковки
-              созданы с использованием перерабатываемых материалов, с минимальным
-              воздействием на окружающую среду.
-            </span>
           </p>
         </div>
         <div className="button">
@@ -88,7 +79,7 @@ function Main({ addToCart }){
   )
 }
 
-function InfoProduct({ addToCart }) {
+function InfoProduct() {
 
   const info = [
     {
@@ -126,10 +117,8 @@ function InfoProduct({ addToCart }) {
     }
   ];
 
+  const { addToCart } =  useContext(CartContext);
   const SwiperSslide = info.map((elem, i) => {
-    const handleAddToCart = () => {
-      addToCart(elem);
-    };
 
     return(
       <SwiperSlide className="product" key={i}>
@@ -151,7 +140,7 @@ function InfoProduct({ addToCart }) {
           <p className="product__name">{elem.name}</p>
           <div className="cost">
             <p>{elem.cost}</p>
-            <img className="plus" src='/img/add__ring.svg' onClick={handleAddToCart}/>
+            <img className="plus" src='/img/add__ring.svg' onClick={() => addToCart(elem, elem.volumes[0])}/>
           </div>
         </div>
       </SwiperSlide>

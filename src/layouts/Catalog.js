@@ -2,21 +2,19 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import UpBtn from '../components/UpBtn';
 import '../CatalogPage.css'
-import React, { useState } from 'react';
-import  useCart  from './useCart';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { catalog } from '../CatalogData';
+import { CartContext } from '../layouts/CartContext';
 
 
 
 function Catalog() {
-  const { handleAddToCart } = useCart()
   return (
     <>
       <Header />
       <PageNav />
-      <ProductCatalog catalog={catalog}
-                      handleAddToCart={handleAddToCart}/>
+      <ProductCatalog catalog={catalog}/>
       <Footer />
       <UpBtn />
     </>
@@ -110,24 +108,22 @@ function NavBlock({name, className, id}){
   )
 }
 
-function ProductCatalog({ catalog, handleAddToCart }) {
+function ProductCatalog({ catalog }) {
 
   const sections = catalog.map((elem, i) => {
   return <Section id={elem.id} 
                   title={elem.title} 
-                  cardsData={elem.cards} 
-                  handleAddToCart={handleAddToCart}  
+                  cardsData={elem.cards}  
                   key={i}/>;
   })
 
   return(<div className='catalog'>{sections}</div>)
 }
 
-function Section({ title, cardsData, id, handleAddToCart }) {
+function Section({ title, cardsData, id }) {
   const cards = cardsData.map((elem) => {
     return <Card item={elem} 
                  key={elem.id}
-                 handleAddToCart={handleAddToCart} 
                 />;
   })
   return (
@@ -140,10 +136,10 @@ function Section({ title, cardsData, id, handleAddToCart }) {
   );
 }
 
-function Card({ item, handleAddToCart }){
+function Card({ item }){
 
+  const { addToCart } =  useContext(CartContext);
   const [applyHoverEffect, setapplyHoverEffect] = useState(false)
-
   let [CurrentVolume, setCurrentVolume] = useState(0);
 
  // выбор объема товара
@@ -175,7 +171,7 @@ function Card({ item, handleAddToCart }){
         </picture>
         <p className="product__volume">0,75л</p>
         <div className="icon__add">
-          <img className="icon" src='/img/add__to__basket.svg' onClick={() => handleAddToCart(item, CurrentVolume)} ></img>
+          <img className="icon" src='/img/add__to__basket.svg' onClick={() => addToCart(item, CurrentVolume)} ></img>
         </div>
         <Link to='/product__page' className= 'link__cover'></Link>
       </div>

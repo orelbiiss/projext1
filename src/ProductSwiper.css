@@ -42,3 +42,11 @@
     font-size: 10px;
     font-family: TildaSansSemibold;
 }
+
+@media screen and (min-width: 1800px){
+    .swipe__potentials {
+        height: 210px;
+        padding: 20px 5px;
+        width: 100%;
+    }
+}

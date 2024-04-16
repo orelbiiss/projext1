@@ -3,22 +3,20 @@ import '../ProductPage.css'
 import SidePanel from '../components/SidePanel'
 import catalog from './Catalog.js'
 import ProductSwiper from '../components/ProductSwiper.js'
-import { useState } from "react";
-import  useCart  from './useCart';
+import { useState, useContext } from "react";
+import { CartContext } from '../layouts/CartContext';
 
 function ProductPage(){
-    const { handleAddToCart } = useCart()
-
     return(
         <>
             <Header/>
-            <MainBlock handleAddToCart = {handleAddToCart}/>
+            <MainBlock />
             <SidePanel />
         </>
     )
 }
 
-function MainBlock({ handleAddToCart }){
+function MainBlock(){
 
     const [addToCartLabel, setaddToCartLabel] = useState(false)
 
@@ -40,6 +38,7 @@ function MainBlock({ handleAddToCart }){
     ]
 
     let [CurrentVolume, setCurrentVolume] = useState(0);
+    const { addToCart } =  useContext(CartContext);
 
     // выбор объема товара
     const handleVolumeClick = (volume) => {
@@ -89,7 +88,7 @@ function MainBlock({ handleAddToCart }){
                                 <p className="rating__value">{product__information[0].ratingValue}</p>
                             </div>
                         </div>
-                        <button className="btn__cart__add" onClick={() => handleAddToCart(product__information[0], CurrentVolume)}>
+                        <button className="btn__cart__add" onClick={() => addToCart(product__information[0], CurrentVolume)}>
                             {addToCartLabel ? "Добавить в корзину" : "Добавить еще"}
                         </button>
                     </div>

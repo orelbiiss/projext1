@@ -1,13 +1,12 @@
 import React, { useContext, useState} from 'react';
 import '../SidePanel.css';
 import { CartContext } from '../layouts/CartContext';
-import  useCart  from '../layouts/useCart'
 import { Link } from 'react-router-dom';
+import ProductSwiper from '../components/ProductSwiper.js'
 
 function SidePanel({ isOpen, onClose }) {
 
   const { cart } = useContext(CartContext);
-  const { handleAddToCart } = useCart()
 
   // вычисление общего количества товаров в корзине
   const totalItems = cart.reduce((acc, item) => acc + item.inBasket, 0)
@@ -30,7 +29,6 @@ function SidePanel({ isOpen, onClose }) {
               ? <ShoppingCart totalCost={totalCost} 
                               price={price}
                               totalItems={totalItems}
-                              handleAddToCart={handleAddToCart}
                               />
               : <EmptyCart />
           }
@@ -45,20 +43,28 @@ function SidePanel({ isOpen, onClose }) {
 function EmptyCart({ onClose }) {
   return (
     <>
-        <div className='text__block'>  
-          <p className='text__block__title'>в корзине</p>
-          <p className='text__block__title'>ничего нет...</p>  
-          <p className='text__description'>Загляните в наш <a className='accent__text'>каталог товаров</a>, чтобы открыть для себя разнообразие напитков</p> 
-        </div> 
-        <div className='display__area'>
-          <Link to="/catalog" className='btn__catalog' onClick={onClose}>Перейти к напиткам</Link>
+      <div className='main__content__cart'>
+        <div>
+          <div className='text__block'>  
+            <p className='text__block__title'>в корзине</p>
+            <p className='text__block__title'>ничего нет...</p>  
+            <p className='text__description'>Загляните в наш <a className='accent__text'>каталог товаров</a>, чтобы открыть для себя разнообразие напитков</p> 
+          </div> 
+          <div className='display__area'>
+            <Link to="/catalog" className='btn__catalog' onClick={onClose}>Перейти к напиткам</Link>
+          </div>
         </div>
+        <div className="product__swiper">
+            <p>Вам может понравиться: </p>
+            <ProductSwiper/>
+        </div>
+      </div>
     </>
   );
 }
 
 // компонент для отображения содержимого корзины
-function ShoppingCart({ totalCost, price, totalItems, handleAddToCart }){
+function ShoppingCart({ totalCost, price, totalItems }){
 
   const { cart, setCart } = useContext(CartContext);
 
@@ -69,7 +75,6 @@ function ShoppingCart({ totalCost, price, totalItems, handleAddToCart }){
                         totalCost={totalCost} 
                         price={price[i]}
                         totalItems={totalItems}
-                        handleAddToCart={ handleAddToCart}
                         />
     )
   })
@@ -126,7 +131,7 @@ function ShoppingCart({ totalCost, price, totalItems, handleAddToCart }){
 }
 
 // компонент для отображения карточки товара в корзине
-function ShoppingCartCard({ item, price, handleAddToCart }) {
+function ShoppingCartCard({ item, price }) {
 
   const [showProductQuantity, setshowProductQuantity] = useState(false)
   return (
@@ -158,10 +163,7 @@ function ShoppingCartCard({ item, price, handleAddToCart }) {
         <div className='block__product__quantity__management'>
           {showProductQuantity === true ? 
             
-            <ProductQuantityManagement item = {item} 
-                                       handleAddToCart={handleAddToCart}
-                                      /> : ''
-          }
+            <ProductQuantityManagement item = {item}/> : '' }
         </div>
         <p className='price__selected'>{ price }  ₽</p>
       </div>
@@ -171,9 +173,10 @@ function ShoppingCartCard({ item, price, handleAddToCart }) {
 
   
   // компонент для управления количеством товара
-  function ProductQuantityManagement({ item, handleAddToCart }){
+  function ProductQuantityManagement({ item }){
   
     const { cart, setCart } = useContext(CartContext);
+    const { addToCart } =  useContext(CartContext);
 
     // обработчик удаления товара из корзины
     const handleRemoveToCart = () => {
@@ -204,7 +207,7 @@ function ShoppingCartCard({ item, price, handleAddToCart }) {
             (<img className="btn-remove__not__active" src='img/remove__not__active.svg' />)
           }
           <p>{item.inBasket}</p>
-          <img className="btn-add__item" src='img/add__ring.svg' onClick={() => { handleAddToCart(item, item.volume)}}></img>
+          <img className="btn-add__item" src='img/add__ring.svg' onClick={() => { addToCart(item, item.volume)}}></img>
         </div>
         <img src='img/close__square__light.svg' onClick={handleRemoveToCart}></img>
       </>

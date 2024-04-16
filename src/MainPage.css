@@ -23,9 +23,6 @@ body, html{
   font-size: clamp(0.75rem, 0.663rem + 0.38vw, 1.125rem);
 }
 
-.dop__text{
-  display: none;
-}
 
 .button{
   display: flex;
@@ -107,8 +104,8 @@ body, html{
 
 .square {
   position: absolute;
-  left: 310px;
-  top: 10px;
+  left: 50%;
+  top: 3.5%;
   width: 80px;
   height: 80px;
   display: flex;
@@ -261,26 +258,21 @@ div.swiper-button-next::after{
 
 @media screen and  (min-width: 1800px){
   .oblast{
-    min-height: 1180px;
+    min-height: 960px;
   }
   .first__section {
     padding-bottom: 69.5px;
-    width: 78%;
-    gap: 40px;
+    width: 68%;
+    gap: 20px;
   }
 
   .beverages {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 28px 18%;
-    font-size: 24px;
+    padding: 18px 18%;
+    font-size: 20px;
   }
-
-  .dop__text {
-    margin-top: 10px;
-    display: block;
-}
 
   .button{
     gap: 25px;
@@ -290,13 +282,18 @@ div.swiper-button-next::after{
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 28px 20%;
-    font-size: 24px;
+    padding: 18px 20%;
+    font-size: 20px;
+  }
+
+  .square {
+    width: 100px;
+    height: 100px;
   }
 
   .description,
   .product__name, .cost{
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .product__name, .cost{
@@ -310,8 +307,8 @@ div.swiper-button-next::after{
   }
 
   .plus {
-    width: 42px;
-    height: 42px;
+    width: 34px;
+    height: 34px;
 }
 
   div.swiper-button-next::after{
