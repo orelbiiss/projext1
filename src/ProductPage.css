@@ -58,9 +58,11 @@
     font-family: TildaSansLight;
     font-size: clamp(0.75rem, 0.663rem + 0.38vw, 1.125rem)
 }
+
 .ingredients{
     margin: 5px 0 20px;
 }
+
 .product__description{
     margin: 15px 0 27px;
 }
@@ -74,12 +76,25 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 5px 20px;
-    border: 1px solid var(--accent-color);
+    padding: 4px 20px;
+    border: 1px solid #7F7F7F;
     border-radius: 50px;
     font-family: TildaSansLight;
     font-size: clamp(0.75rem, 0.663rem + 0.38vw, 1.125rem);
     cursor: pointer;
+    transition: 0.16s ease;
+}
+
+.volumes:hover{
+    transform: scale(1.05);
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.volumes:not(.active) {
+    transform: scale(1.05);
+    border-color: var(--accent-color);
+    color: var(--accent-color);
 }
 
 .price__star__rating__container{
@@ -109,7 +124,14 @@
 .btn__cart__add{
     border-radius: 100px;
     padding: 17px;
-    border: 1px solid var(--accent-color);
+    background-color: var(--text-color);
     cursor: pointer;
+    border: 0;
+    color: white;
+    transition: 0.2s ease;
     
+}
+
+.btn__cart__add:hover{
+    background-color: var(--accent-color);
 }

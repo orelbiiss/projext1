@@ -21,6 +21,10 @@
     padding: 10px 21px;
 }
 
+.potential__choices:hover{
+    transform: scale(1.4);
+}
+
 .potential__choices__img{
     height: 100%;
 }
@@ -51,14 +55,28 @@
     font-family: TildaSansSemibold;
 }
 
-
-
-.add__to__cart-btn{
-    width: 100%;
-    padding: 25px;
-    margin: 50px 0;
+.switch__to__product{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     border-radius: 20px;
+    cursor: pointer;
 }
+
+.add__to__basket {
+    position: absolute;
+    bottom: 10px;
+    right: 21px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.add__to__basket:hover{
+    transform: scale(1.1);
+}
+
 
 @media screen and (min-width: 1800px){
     .swipe__potentials {

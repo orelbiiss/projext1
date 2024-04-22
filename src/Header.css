@@ -185,9 +185,9 @@
   .icon__menu__default,
   .icon__menu__cross,
   .icon__basket {
-      width: 17.5px;
-      height: 19px;
-      display: block;
+    width: 17.5px;
+    height: 19px;
+    display: block;
       /* background-color: #2B1B1B; */
   }
 
@@ -195,6 +195,8 @@
   .icon__menu__cross{
       position: relative;
       display: flex;
+      width: 19px;
+      height: 20px;
       flex-wrap: wrap;
       gap: 2px;
       overflow: hidden;

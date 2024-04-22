@@ -17,8 +17,6 @@ function ProductPage(){
 }
 
 function MainBlock(){
-  
-    const [addToCartLabel, setaddToCartLabel] = useState(false)
 
     const product__information = [
         {   
@@ -38,7 +36,7 @@ function MainBlock(){
     ]
 
     let [CurrentVolume, setCurrentVolume] = useState(0);
-    const { addToCart } =  useContext(CartContext);
+    const { addToCart, cart } =  useContext(CartContext);
 
     // выбор объема товара
     const handleVolumeClick = (volume) => {
@@ -70,7 +68,7 @@ function MainBlock(){
                             <div className="line__volume">
                                 {product__information[0].volumes.map((volume, i) => {
                                     return (
-                                        <div className="volumes"  key={i} onClick={() => handleVolumeClick(volume)}>
+                                        <div className={'volumes' + (volume !== CurrentVolume ? ' active' : '')}  key={i} onClick={() => handleVolumeClick(volume)}>
                                             <img src="/img/bottle__svg.svg"></img>
                                             <p className="volumes_p">{ volume }</p>
                                         </div>
@@ -89,7 +87,7 @@ function MainBlock(){
                             </div>
                         </div>
                         <button className="btn__cart__add" onClick={() => addToCart(product__information[0], CurrentVolume)}>
-                            {addToCartLabel ? "Добавить в корзину" : "Добавить еще"}
+                            {cart.some(item => item.id === product__information[0].id) ? "Добавить еще" : "Добавить в корзину" }
                         </button>
                     </div>
                     <div className="product__swiper">

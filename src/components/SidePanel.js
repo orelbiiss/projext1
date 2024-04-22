@@ -111,12 +111,15 @@ function ShoppingCart({ totalCost, price, totalItems }){
       <div className='cost__info'>
         <p className='title__cost__info'>сумма заказа</p> 
         <div className='product__price__cart__wrapper'>
-        <p className='product__price__cart'>стоимость продуктов</p>
-        <span>{totalCost} ₽</span>
+          <p className='product__price__cart'>стоимость продуктов</p>
+          {/* <span className='decorative__block'></span> */}
+          <img src='../img/line__dotted.svg' className='decorative__block'></img>
+          <span>{totalCost} ₽</span>
         </div>
           {totalSale > 0 ? 
             <div className='total__sale__wrapper'>
               <p className='total__sale'>скидка</p> 
+              <img src='../img/accent__line__dotted.svg' className='accent__decorative__block'></img>
               <span>-{totalSale} ₽</span>
             </div> : 
           '' }
@@ -124,7 +127,11 @@ function ShoppingCart({ totalCost, price, totalItems }){
           <p className='total__price'>итого</p> 
           <span>{totalCost - totalSale} ₽</span>
         </div>
-        <button className='add__to__cart-btn'></button>
+        <button className='add__to__cart-btn'> Оформить заказ</button>
+      </div>
+      <div className="product__swiper">
+            <p>вам может понравиться: </p>
+            <ProductSwiper/>
       </div>
     </>
   )
