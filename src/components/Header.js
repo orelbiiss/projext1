@@ -1,32 +1,39 @@
 import React, { useContext, useState } from 'react';
 import { useMediaQuery } from 'usehooks-ts'
 import { Link, useNavigate } from 'react-router-dom';
-import SidePanel from './SidePanel.js';
+import SidePanel from './SideBar.js';
 import '../Header.css';
 import { CartContext } from '../layouts/CartContext.js';
 
 
 function Header() {
 
-  const navigate = useNavigate();
-
   const { cart } = useContext(CartContext);
+  const { setLoginWindowOpen } = useContext(CartContext);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isPanelOpen, setIsPanelOpen] = useState(false);
 
-  const isSmallScreen = useMediaQuery('(max-width: 768px)');
 
+  const isSmallScreen = useMediaQuery('(max-width: 768px)');
 
   // Функция для открытия/закрытия боковой панели 
   //или перехода на страницу корзины в зависимости от размера экрана
   function togglePanel() {
     if (isSmallScreen) {
-      navigate('/cart'); // Переход на страницу корзины
+      <Link to='/cart'></Link>
     } else {
       setIsPanelOpen(!isPanelOpen); // Открытие SidePanel
     }
   }
+
+  function toggleLoginWindow() {
+    if (isSmallScreen) {
+      <Link to='/cart'></Link>
+    } else {
+      setLoginWindowOpen(true); // Открытие панели авторизации
+    }
+}
   
   return(
     <header className="header__section">
@@ -59,6 +66,7 @@ function Header() {
         </li>
       </ul>
       <div className="basket__menu__icons">
+        <img className='profile__circle' src='/img/profile__circle.svg' onClick={() => { setIsPanelOpen(true); toggleLoginWindow()}}></img>
         <img className="icon__basket" src='/img/basket.svg' alt="корзина" onClick={togglePanel}/>
         <div className={"count" + (cart.length ? ' active' : '')} onClick={togglePanel}>
           {cart.reduce((acc, item) => acc + item.inBasket, 0)}

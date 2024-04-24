@@ -303,6 +303,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
     position: relative;
     width: 100%;
     padding: 18px;

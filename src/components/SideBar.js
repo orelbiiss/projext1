@@ -1,41 +1,81 @@
 import React, { useContext, useState} from 'react';
-import '../SidePanel.css';
-import { CartContext } from '../layouts/CartContext';
+import '../SideBar.css';
+import { CartContext } from '../layouts/CartContext.js';
 import { Link } from 'react-router-dom';
-import ProductSwiper from '../components/ProductSwiper.js'
+import ProductSwiper from './ProductSwiper.js'
 
 function SidePanel({ isOpen, onClose }) {
 
   const { cart } = useContext(CartContext);
+  const { isLoginWindowOpen, setLoginWindowOpen } = useContext(CartContext);
+  const [useRegistrationPanel, setUseRegistrationPanel] = useState(false)
 
   // вычисление общего количества товаров в корзине
   const totalItems = cart.reduce((acc, item) => acc + item.inBasket, 0)
-  
+  const sidebarStatus = () => {
+    let status;
+    if(cart.length > 0){
+      if(isLoginWindowOpen !== true){
+        status = <ShoppingCart totalCost={totalCost} 
+                               price={price}
+                               totalItems={totalItems}
+                               setUseRegistrationPanel={setUseRegistrationPanel}
+                               useRegistrationPanel={useRegistrationPanel}/>
+      } else {
+          status = <RegisterUser />
+      }
+    } else{
+      if(isLoginWindowOpen !== true){
+        status = <EmptyCart />
+      } else{
+        status = <RegisterUser />
+      }
+    }
+    return status;
+  }
+
+  console.log(useRegistrationPanel)
+  console.log(isLoginWindowOpen)
   // вычисление общей стоимости товаров(totalCost) в корзине
   const price = cart.map(item => {
     let quanity = item.inBasket > 1 ? item.inBasket : 1;
     return item.prices[item.volumes.indexOf(item.volume)] * quanity ?? item.prices[0] * quanity;
   })
   const totalCost = price.reduce((acc, val) => acc + val, 0) 
-
   return (
     <div className={`${isOpen ? 'side__panel__open' : 'side__panel'}`}>
       <div className='handleClickOutside' onClick={onClose}></div>
       <div className='content__block'>
         <div className='content'> 
-          <img src='img/close__square__light.svg' className='close__btn' onClick={onClose}></img>
-          {
-            cart.length > 0
-              ? <ShoppingCart totalCost={totalCost} 
-                              price={price}
-                              totalItems={totalItems}
-                              />
-              : <EmptyCart />
-          }
+          <img src='img/close__square__light.svg' className='close__btn' onClick={() => {onClose(); setLoginWindowOpen(false); setUseRegistrationPanel(false)}}></img>
+          {sidebarStatus()}
         </div>
       </div>
     </div>
   );
+}
+
+function RegisterUser(){
+  return(
+    <>
+      <p>Войти или</p>
+      <p>зарегистрироваться</p>
+      <p>Позвоним или пришлём SMS. Введите последние четыре цифры номера телефона или код из SMS-сообщения.</p>
+      <select multiple>
+        <option value='apple'>Россия</option>
+        <option value='banana'>Беларусь</option>
+        <option value='orange'>Казахстан</option>
+      </select>
+    </>
+  )
+}
+
+function UseRegistrationPanel(){
+  return(
+    <>
+      <p>ghghhghghghg</p>
+    </>
+  )
 }
 
 
@@ -64,9 +104,10 @@ function EmptyCart({ onClose }) {
 }
 
 // компонент для отображения содержимого корзины
-function ShoppingCart({ totalCost, price, totalItems }){
+function ShoppingCart({ totalCost, price, totalItems, setUseRegistrationPanel, useRegistrationPanel }){
 
   const { cart, setCart } = useContext(CartContext);
+  const { isLoginWindowOpen, setLoginWindowOpen } = useContext(CartContext)
 
   const cartCardsJsx = cart.map((elem, i) => {
     return(
@@ -91,54 +132,60 @@ function ShoppingCart({ totalCost, price, totalItems }){
   }
   
   return(
-    <>
-      <div className='status__block'>
-        <p className='basket__text'>
-          корзина <span>/ {totalItems} шт.</span>
-        </p>
-        <button className={"btn__delete__each" + (cart.length > 1 ? ' active ' : '')} 
-        onClick={DeleteEach}>удалить всё</button>
-      </div>
-      <div className='product__cards__block'>
-        {cartCardsJsx}
-      </div>
-      <input
-        type="text"
-        id="promo__code__fiekd"
-        className="promo__code"
-        placeholder="ВВЕДИТЕ ПРОМОКОД"
-      />
-      <div className='cost__info'>
-        <p className='title__cost__info'>сумма заказа</p> 
-        <div className='product__price__cart__wrapper'>
-          <p className='product__price__cart'>стоимость продуктов</p>
-          {/* <span className='decorative__block'></span> */}
-          <img src='../img/line__dotted.svg' className='decorative__block'></img>
-          <span>{totalCost} ₽</span>
-        </div>
-          {totalSale > 0 ? 
-            <div className='total__sale__wrapper'>
-              <p className='total__sale'>скидка</p> 
-              <img src='../img/accent__line__dotted.svg' className='accent__decorative__block'></img>
-              <span>-{totalSale} ₽</span>
-            </div> : 
-          '' }
-        <div className='total__price__wrapper'>
-          <p className='total__price'>итого</p> 
-          <span>{totalCost - totalSale} ₽</span>
-        </div>
-        <button className='add__to__cart-btn'> Оформить заказ</button>
-      </div>
-      <div className="product__swiper">
-            <p>вам может понравиться: </p>
-            <ProductSwiper/>
-      </div>
+    <> 
+       { useRegistrationPanel ? <UseRegistrationPanel /> :
+        <>
+          <div className='status__block'>
+            <p className='basket__text'>
+              корзина <span>/ {totalItems} шт.</span>
+            </p>
+            <button className={"btn__delete__each" + (cart.length > 1 ? ' active ' : '')} 
+            onClick={DeleteEach}>удалить всё</button>
+          </div>
+          <div className='product__cards__block'>
+            {cartCardsJsx}
+          </div>
+          <input
+            type="text"
+            id="promo__code__fiekd"
+            className="promo__code"
+            placeholder="ВВЕДИТЕ ПРОМОКОД"
+          />
+          <div className='cost__info'>
+            <p className='title__cost__info'>сумма заказа</p> 
+            <div className='product__price__cart__wrapper'>
+              <p className='product__price__cart'>стоимость продуктов</p>
+              {/* <span className='decorative__block'></span> */}
+              <img src='../img/line__dotted.svg' className='decorative__block'></img>
+              <span>{totalCost} ₽</span>
+            </div>
+            {totalSale > 0 ? 
+              <div className='total__sale__wrapper'>
+                <p className='total__sale'>скидка</p> 
+                <img src='../img/accent__line__dotted.svg' className='accent__decorative__block'></img>
+                <span>-{totalSale} ₽</span>
+              </div> : 
+            '' }
+          <div className='total__price__wrapper'>
+            <p className='total__price'>итого</p> 
+            <span>{totalCost - totalSale} ₽</span>
+          </div>
+          <button className='add__to__cart-btn' onClick={() => setUseRegistrationPanel(true)}> Оформить заказ</button>
+          </div>
+          <div className="product__swiper">
+              <p>вам может понравиться: </p>
+              <ProductSwiper/>
+          </div>
+        </>
+      }
     </>
   )
 }
 
+
 // компонент для отображения карточки товара в корзине
 function ShoppingCartCard({ item, price }) {
+
 
   const [showProductQuantity, setshowProductQuantity] = useState(false)
   return (

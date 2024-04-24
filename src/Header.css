@@ -50,6 +50,7 @@
 .basket__menu__icons{
   position: relative;
   display: flex;
+  gap: 20px;
   justify-content: flex-end;
   width: clamp(4.688rem, 3.923rem + 3.4vw, 8rem);
 }
@@ -94,7 +95,8 @@
   gap: 10px;
 }
 
-.icon__basket{
+.icon__basket,
+.profile__circle{
   cursor: pointer;
   border: 0;
 }
@@ -122,8 +124,8 @@
 @media screen and (min-width: 1800px){
 
  
-  .icon__basket {
-    width: 21px;
+  .icon__basket,
+  .profile__circle {
     height: 30px;
   }
 
@@ -147,8 +149,8 @@
     height: 100px;
   }
 
-  .icon__basket {
-      width: 19px;
+  .icon__basket,
+  .profile__circle {
       height: 27px;
   }
 
@@ -156,8 +158,8 @@
 
 /* Экраны шириной меньше 1024px */
 @media screen and (max-width: 1024px) {
-.icon__basket {
-    width: 14px;
+.icon__basket,
+.profile__circle {
     height: 19px;
 }
 }
@@ -169,7 +171,8 @@
   }
 
   .social__media__icons,
-  .hdr__text {
+  .hdr__text,
+  .profile__circle {
       display: none;
   }
 
@@ -179,6 +182,7 @@
   
   .basket__menu__icons {
       display: flex;
+      gap: 0;
       justify-content: space-around;
   }
   
@@ -377,12 +381,9 @@
       width: 80px;
   }
 
-  .icon__menu {
-      width: 19px;
-      height: 19px;
-  }
-
-  .icon__basket {
+  .icon__basket,
+  .profile__circle,
+  .icon__menu{
       width: 19px;
       height: 19px;
   }

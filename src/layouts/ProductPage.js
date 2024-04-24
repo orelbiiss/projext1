@@ -1,7 +1,6 @@
 import Header from "../components/Header";
 import '../ProductPage.css'
-import SidePanel from '../components/SidePanel'
-import catalog from './Catalog.js'
+import SidePanel from '../components/SideBar'
 import ProductSwiper from '../components/ProductSwiper.js'
 import { useState, useContext } from "react";
 import { CartContext } from '../layouts/CartContext';

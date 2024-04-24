@@ -4,6 +4,7 @@ export const CartContext = createContext();
 
 function CartContextProvider({ children }) {
     const [cart, setCart] = useState([]);
+    const [isLoginWindowOpen, setLoginWindowOpen] = useState(false); 
 
     function addToCart(item, volume) {
         // проверка выбран ли объем, если нет, выбирается первый объем из списка
@@ -43,7 +44,7 @@ function CartContextProvider({ children }) {
     }, [cart]);
  
     return (
-        <CartContext.Provider value={{ cart, setCart, addToCart }} >
+        <CartContext.Provider value={{ cart, setCart, addToCart, isLoginWindowOpen, setLoginWindowOpen}} >
             { children }
         </CartContext.Provider>
     )
