@@ -15,24 +15,14 @@ function Header() {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
 
 
-  const isSmallScreen = useMediaQuery('(max-width: 768px)');
-
   // Функция для открытия/закрытия боковой панели 
   //или перехода на страницу корзины в зависимости от размера экрана
   function togglePanel() {
-    if (isSmallScreen) {
-      <Link to='/cart'></Link>
-    } else {
-      setIsPanelOpen(!isPanelOpen); // Открытие SidePanel
-    }
+      setIsPanelOpen(!isPanelOpen);
   }
 
   function toggleLoginWindow() {
-    if (isSmallScreen) {
-      <Link to='/cart'></Link>
-    } else {
-      setLoginWindowOpen(true); // Открытие панели авторизации
-    }
+      setLoginWindowOpen(true); 
 }
   
   return(

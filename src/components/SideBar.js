@@ -56,18 +56,57 @@ function SidePanel({ isOpen, onClose }) {
 }
 
 function RegisterUser(){
-  return(
+  
+  const [country, setCountry] = useState('Россия');
+
+  const countryInfo = [
+    {
+      name: 'Россия',
+      className: 'flag__Russia',
+      flagImg: 'img/flag__Russia.svg'
+    },
+    {
+      name: 'Беларусь',
+      className: 'flag__Belarus',
+      flagImg: 'img/flag__Belarus.svg'
+    },
+    {
+      name: 'Казахстан',
+      className: 'flag__Kazakhstan',
+      flagImg: 'img/flag__Kazakhstan.svg'
+    }
+  ];
+
+  const  CountryOption = countryInfo.map((item, i) => {
+    return (
+      <div className='country' onClick={() => setCountry(item.name)} key={i}>
+        <img  className={item.className} src={item.flagImg} alt={item.name} />
+        {item.name}
+      </div>
+    );
+  })
+ 
+  const selectedCountryImg = countryInfo.find(img => img.name === country)?.flagImg
+  const selectedCountryClass = countryInfo.find(item => item.name === country)?.className;
+  return (
     <>
-      <p>Войти или</p>
-      <p>зарегистрироваться</p>
-      <p>Позвоним или пришлём SMS. Введите последние четыре цифры номера телефона или код из SMS-сообщения.</p>
-      <select multiple>
-        <option value='apple'>Россия</option>
-        <option value='banana'>Беларусь</option>
-        <option value='orange'>Казахстан</option>
-      </select>
+      <div className='registration__container'>
+        <p className='registration__title'>Войти или</p>
+        <p className='registration__title'>зарегистрироваться</p>
+        <p className='registration__text'>Позвоним или пришлём SMS. Введите последние четыре цифры номера телефона или код из SMS-сообщения.</p>
+          <div className='country-selector__wrapper'> 
+            <div className='selected__country'>
+              <img className={selectedCountryClass} src={selectedCountryImg} alt={country} />
+              {country}
+            </div>
+            <img src='img/expand__up.svg'></img>
+          </div>
+        <div className='country__list'>
+          {CountryOption}
+        </div>
+      </div>
     </>
-  )
+  );
 }
 
 function UseRegistrationPanel(){

@@ -50,7 +50,7 @@
 .basket__menu__icons{
   position: relative;
   display: flex;
-  gap: 20px;
+  gap: clamp(0.625rem, 0.337rem + 1.28vw, 1.875rem);
   justify-content: flex-end;
   width: clamp(4.688rem, 3.923rem + 3.4vw, 8rem);
 }

@@ -80,6 +80,8 @@
     transform: scale(1.1) rotate(90deg);
 }
 
+/* EmptyCart */
+
 .main__content__cart{
     display: flex;
     flex-direction: column;
@@ -96,7 +98,7 @@
 .text__description{
     margin: 17px 0 30px;
     font-family: TildaSansLight;
-    font-size: clamp(0.75rem, 0.663rem + 0.38vw, 1.125rem);
+    font-size: 16px;
 }
 
 .accent__text{
@@ -109,7 +111,7 @@
     width: 100%;
 }
 
-/*  */
+/* ShoppingCart */
 
 .status__block{
     display: flex;
@@ -129,7 +131,7 @@
 
 .btn__delete__each:not(.active) {
     display: none;
-  }
+}
 
 .btn__delete__each{
     border: 0;
@@ -140,88 +142,6 @@
 .btn__delete__each:hover{
     color: var(--text-color);
 }
-
-.cart-item{
-    display: flex;
-    padding: 20px 0;
-}
-
-.cart-item__img-wrapper{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 150px;
-    height: 150px;
-    background-color:  var(--secondary-fill-color);
-}
-
-.cart-item__content-description{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: calc(100% - 280px);
-    margin: 15px;
-}
-
-.item__ingredients,
-.item__volume{
-    font-family: TildaSansLight;
-    font-size: 9px;
-    text-transform: uppercase;
-    padding-bottom: 8px;
-}
-
-.item__name{
-    font-family: TildaSansSemibold;
-    line-height: 100%;
-    font-size: 18px;
-    padding-bottom: 20px;
-}
-
-.price__selected__product{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: end;
-    position: relative;
-    width: 120px;
-    font-family: TildaSansSemibold;
-    line-height: 100%;
-    font-size: 18px;
-}
-
-.price__selected{
-    position: absolute;
-    bottom: 0;
-}
-
-.block__product__quantity__management{
-    display: flex;
-    width: 100%;
-    position: relative;
-    justify-content: space-between;
-}
-
-.main__buttons{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-.block__product__quantity__management > img,
-.btn-remove__active,
-.btn-add__item,
-.btn__delete__each {
-    cursor: pointer;
-}
-
-
-.product__cards__block,
-.promo__code{
-    margin: 0 0 60px;
-}
-
 
 .promo__code{
     width: 100%;
@@ -238,6 +158,11 @@
 .promo__code::placeholder{
     font-size: 12px;
     font-family: TildaSansSemibold;
+}
+
+.product__cards__block,
+.promo__code{
+    margin: 0 0 60px;
 }
 
 .title__cost__info{
@@ -344,6 +269,162 @@
     height: 0;
 }
 
+/* ShoppingCartCard */
+
+.cart-item{
+    display: flex;
+    padding: 20px 0;
+}
+
+.cart-item__img-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 150px;
+    background-color:  var(--secondary-fill-color);
+}
+
+.cart-item__content-description{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: calc(100% - 280px);
+    margin: 15px;
+}
+
+.item__ingredients,
+.item__volume{
+    font-family: TildaSansLight;
+    font-size: 9px;
+    text-transform: uppercase;
+    padding-bottom: 8px;
+}
+
+.item__name{
+    font-family: TildaSansSemibold;
+    line-height: 100%;
+    font-size: 18px;
+    padding-bottom: 20px;
+}
+
+.price__selected__product{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+    position: relative;
+    width: 120px;
+    font-family: TildaSansSemibold;
+    line-height: 100%;
+    font-size: 18px;
+}
+
+.price__selected{
+    position: absolute;
+    bottom: 0;
+}
+
+
+/* ProductQuantityManagement */
+
+.block__product__quantity__management{
+    display: flex;
+    width: 100%;
+    position: relative;
+    justify-content: space-between;
+}
+
+.main__buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.block__product__quantity__management > img,
+.btn-remove__active,
+.btn-add__item,
+.btn__delete__each {
+    cursor: pointer;
+}
+
+
+/* RegisterUser */
+
+.registration__container{
+    width: 360px;
+    margin: auto;
+}
+
+.registration__title {
+    font-family: TildaSansSemibold;
+    line-height: 100%;
+    font-size: 32px;
+}
+
+.registration__text {
+    margin: 20px 0 20px;
+    font-size: 16px;
+    font-family: TildaSansLight;
+}
+
+.country-selector__wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8px;
+    height: 50px;
+    border: 0;
+    outline: none;
+    border-bottom: 1px solid #7F7F7F;
+    font-family: TildaSansSemibold;
+    font-size: clamp(0.75rem, 0.663rem + 0.38vw, 1.125rem);
+    text-transform: uppercase;
+}
+
+.selected__country,
+.country {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.flag__Russia{
+    border: 0.3px solid #dbdbdb;
+}
+
+.flag__Kazakhstan{
+    object-fit: cover;
+    object-position: -5.7px;
+    height: 20px;
+    width: 30px;
+}
+.selected__country > img,
+.flag__Belarus,
+.flag__Russia{
+    object-fit: cover;
+    object-position: left;
+    height: 20px;
+    width: 30px;
+}
+
+
+.country__list {
+    position: absolute;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    width: 400px;
+    padding: 20px 28px;
+    box-shadow: 0 5px 15px #00000026;
+    transform: translate3d(-20px, 50px, 0);
+}
+
+
+
+/*  UseRegistrationPanel */
+
 @media screen and (min-width: 1800px) {
     .close__btn{
         width: 34px;
@@ -370,7 +451,59 @@
     
 }
 
+@media screen and (max-width: 768px) {
+    ::-webkit-scrollbar{
+        display: none;
+    }
+
+    .side__panel__open {
+        z-index: 12;
+        animation: none;
+    }
+
+    .content{
+        padding: 80px clamp(1.875rem, 0.536rem + 6.7vw, 3.75rem) 60px;
+        overflow-y: auto;
+    }
+    .content__block{
+        width: 100%;
+    }
+
+    .cart-item__img-wrapper {
+        width: clamp(7.5rem, 6.13rem + 6.85vw, 9.375rem);
+        height: clamp(7.5rem, 6.13rem + 6.85vw, 9.375rem);
+    }
+
+    .cart-item__content-description {
+        width: calc(100% - clamp(11.875rem, 7.765rem + 20.55vw, 17.5rem));
+    }
+
+    .item__ingredients, .item__volume {
+        font-size: clamp(0.438rem, 0.346rem + 0.46vw, 0.563rem);
+    }
+
+    .price__selected__product{
+        width: clamp(4.375rem, 2.092rem + 11.42vw, 7.5rem);
+        font-size: 16px;
+    }
+    .item__name{
+        font-size: clamp(0.813rem, 0.679rem + 0.67vw, 1rem);
+    }
+    
+    .title__cost__info,
+    .total__price__wrapper > span {
+        font-size: clamp(1.25rem, 1.027rem + 1.12vw, 1.563rem);
+    }
+
+    .promo__code{
+        font-size: clamp(0.625rem, 0.397rem + 1.14vw, 0.938rem);
+        padding: clamp(0.875rem, 0.692rem + 0.91vw, 1.125rem);
+    }
+
+}
+
 @media screen and (max-width: 660px) {
     
     
 }
+
