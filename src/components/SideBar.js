@@ -2,7 +2,8 @@ import React, { useContext, useState} from 'react';
 import '../SideBar.css';
 import { CartContext } from '../layouts/CartContext.js';
 import { Link } from 'react-router-dom';
-import ProductSwiper from './ProductSwiper.js'
+import ProductSwiper from './ProductSwiper.js';
+import { useMediaQuery } from 'usehooks-ts';
 
 function SidePanel({ isOpen, onClose }) {
 
@@ -58,22 +59,27 @@ function SidePanel({ isOpen, onClose }) {
 function RegisterUser(){
   
   const [country, setCountry] = useState('Россия');
+  const [countryPanelOpen, setCountryPanelOpen] = useState(false);
+
 
   const countryInfo = [
     {
       name: 'Россия',
       className: 'flag__Russia',
-      flagImg: 'img/flag__Russia.svg'
+      flagImg: 'img/flag__Russia.svg',
+      telephoneCode:'+7'
     },
     {
       name: 'Беларусь',
       className: 'flag__Belarus',
-      flagImg: 'img/flag__Belarus.svg'
+      flagImg: 'img/flag__Belarus.svg',
+      telephoneCode:'+375'
     },
     {
       name: 'Казахстан',
       className: 'flag__Kazakhstan',
-      flagImg: 'img/flag__Kazakhstan.svg'
+      flagImg: 'img/flag__Kazakhstan.svg',
+      telephoneCode:'+7'
     }
   ];
 
@@ -88,22 +94,32 @@ function RegisterUser(){
  
   const selectedCountryImg = countryInfo.find(img => img.name === country)?.flagImg
   const selectedCountryClass = countryInfo.find(item => item.name === country)?.className;
+  const selectedCountryTelephoneCode = countryInfo.find(item => item.name === country)?.telephoneCode; 
   return (
     <>
       <div className='registration__container'>
         <p className='registration__title'>Войти или</p>
         <p className='registration__title'>зарегистрироваться</p>
         <p className='registration__text'>Позвоним или пришлём SMS. Введите последние четыре цифры номера телефона или код из SMS-сообщения.</p>
-          <div className='country-selector__wrapper'> 
-            <div className='selected__country'>
-              <img className={selectedCountryClass} src={selectedCountryImg} alt={country} />
-              {country}
-            </div>
-            <img src='img/expand__up.svg'></img>
+        <div className={countryPanelOpen ? 'country-selector__wrapper__190deg' : 'country-selector__wrapper'} onClick={() => setCountryPanelOpen(!countryPanelOpen)}> 
+          <div className='selected__country'>
+            <img className={selectedCountryClass} src={selectedCountryImg} alt={country} />
+            {country}
           </div>
-        <div className='country__list'>
-          {CountryOption}
+          <img src='img/expand__up.svg'></img>
         </div>
+        {countryPanelOpen ? 
+          <div className='country__list'>
+            {CountryOption}
+          </div> : ''
+        }
+        <div className='phone__number__container'>
+          <div className='telephone__code'>
+            {selectedCountryTelephoneCode}
+          </div>
+          <input placeholder='___-___-__-__' type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required />
+        </div>
+        <button className='add__to__cart-btn'>получить код</button>
       </div>
     </>
   );
@@ -147,18 +163,23 @@ function ShoppingCart({ totalCost, price, totalItems, setUseRegistrationPanel, u
 
   const { cart, setCart } = useContext(CartContext);
   const { isLoginWindowOpen, setLoginWindowOpen } = useContext(CartContext)
+  const [panelOpen, setPanelOpen] = useState(false);
 
   const cartCardsJsx = cart.map((elem, i) => {
     return(
+      <>
       <ShoppingCartCard item = {elem} 
                         key={i}
                         totalCost={totalCost} 
                         price={price[i]}
                         totalItems={totalItems}
+                        DeleteEach={DeleteEach}
+                        panelOpen={panelOpen}
+                        setPanelOpen={setPanelOpen}
                         />
+      </>
     )
   })
-
   // вычисление суммарной скидки
   const lineSale = cart.map((elem, i) => {
     return 'sale' in elem ? elem.sale : 0;
@@ -215,97 +236,105 @@ function ShoppingCart({ totalCost, price, totalItems, setUseRegistrationPanel, u
               <p>вам может понравиться: </p>
               <ProductSwiper/>
           </div>
-        </>
-      }
-    </>
+          {panelOpen ?
+          <>
+            <div className='product__quantity__management-930px' onClick={() => setPanelOpen(false)}>
+              <div className='button__container'> 
+                <div className='top__block'>
+                  <p>изменить количество</p>
+                  {cart.map((elem, i) => <ProductQuantityManagement item={elem} key={i}/>)}
+                </div>
+                <div  onClick={DeleteEach}>удалить</div>
+              </div>
+            </div>
+          </> : ''}
+      </>
+    }   
+  </>
   )
 }
 
 
 // компонент для отображения карточки товара в корзине
-function ShoppingCartCard({ item, price }) {
-
-
+function ShoppingCartCard({ item, price, setPanelOpen, panelOpen }) {
+  const isSmallScreen = useMediaQuery('(max-width: 930px)');
   const [showProductQuantity, setshowProductQuantity] = useState(false)
   return (
     <>
-    <div className='cart-item' 
+      <div className='cart-item' 
         onMouseEnter={() => setshowProductQuantity(true)} 
         onMouseLeave={() => setshowProductQuantity(false)}>
 
-      <picture className='cart-item__img-wrapper'>
-        <source
-          className="main__block__product__img"
-          type="image/webp"
-          srcSet  ={` ${item.webpSrc1x} 1x, ${item.webpSrc2x} 2x`}
-          />
-        <img
-          className="main__block__product__img"
-          srcSet = {` ${item.imgSrc1x} 1x, ${item.imgSrc2x} 2x`}
-          alt={item.name}
-          />
-      </picture>
-      <div className='cart-item__content-description'>
-        <div>
-          <p className='item__ingredients'>{ item.ingredients }</p>
-          <p className='item__name'>{ item.name }</p>
+        <picture className='cart-item__img-wrapper'>
+          <source
+            className="main__block__product__img"
+            type="image/webp"
+            srcSet  ={` ${item.webpSrc1x} 1x, ${item.webpSrc2x} 2x`}
+            />
+          <img
+            className="main__block__product__img"
+            srcSet = {` ${item.imgSrc1x} 1x, ${item.imgSrc2x} 2x`}
+            alt={item.name}
+            />
+        </picture>
+        <div className='cart-item__content-description'>
+          <div>
+            <p className='item__ingredients'>{ item.ingredients }</p>
+            <p className='item__name'>{ item.name }</p>
+          </div>
+          <p className='item__volume'>{ item.volume }</p>
         </div>
-        <p className='item__volume'>{ item.volume }</p>
-      </div>
-      <div className='price__selected__product'>
-        <div className='block__product__quantity__management'>
-          {showProductQuantity === true ? 
-            
-            <ProductQuantityManagement item = {item}/> : '' }
+        <div className='price__selected__product'>
+          <div className='block__product__quantity__management'>
+          {isSmallScreen ? <img src='img/more__vertical.svg' onClick={() => setPanelOpen(!panelOpen)}></img> : showProductQuantity ? <ProductQuantityManagement item = {item}/> : '' }
+          </div>
+          <p className='price__selected'>{ price }  ₽</p>
         </div>
-        <p className='price__selected'>{ price }  ₽</p>
       </div>
-    </div>
     </>
-  );
+  ); 
+}
+// компонент для управления количеством товара
+function ProductQuantityManagement({ item }){
 
-  
-  // компонент для управления количеством товара
-  function ProductQuantityManagement({ item }){
-  
-    const { cart, setCart } = useContext(CartContext);
-    const { addToCart } =  useContext(CartContext);
+  const { cart, setCart } = useContext(CartContext);
+  const { addToCart } =  useContext(CartContext);
+  const isSmallScreen = useMediaQuery('(max-width: 930px)');
 
-    // обработчик удаления товара из корзины
-    const handleRemoveToCart = () => {
-      const updatedCart = cart.filter(cartItem => cartItem.id !== item.id || cartItem.volume !== item.volume)
-      setCart(updatedCart)
-    }
-
-    // обработчик удаления одной единицы товара из корзины
-    const removeOneItemFromCar = () => {
-      const updatedCart = cart.map(cartItem => {
-        if (cartItem.id === item.id && cartItem.volume === item.volume) {
-          return {
-            ...cartItem,
-            inBasket: cartItem.inBasket - 1
-          };
-        }
-        return cartItem;
-      });
-    
-      setCart(updatedCart);
-    }
-
-    return(
-      <>
-        <div className='main__buttons'>
-          {item.inBasket > 1 ? 
-            (<img className="btn-remove__active" src='img/remove__active.svg' onClick={removeOneItemFromCar} />) : 
-            (<img className="btn-remove__not__active" src='img/remove__not__active.svg' />)
-          }
-          <p>{item.inBasket}</p>
-          <img className="btn-add__item" src='img/add__ring.svg' onClick={() => { addToCart(item, item.volume)}}></img>
-        </div>
-        <img src='img/close__square__light.svg' onClick={handleRemoveToCart}></img>
-      </>
-    )
+  // обработчик удаления товара из корзины
+  const handleRemoveToCart = () => {
+    const updatedCart = cart.filter(cartItem => cartItem.id !== item.id || cartItem.volume !== item.volume)
+    setCart(updatedCart)
   }
+
+  // обработчик удаления одной единицы товара из корзины
+  const removeOneItemFromCar = () => {
+    const updatedCart = cart.map(cartItem => {
+      if (cartItem.id === item.id && cartItem.volume === item.volume) {
+        return {
+          ...cartItem,
+          inBasket: cartItem.inBasket - 1
+        };
+      }
+      return cartItem;
+    });
+  
+    setCart(updatedCart);
+  }
+
+  return(
+    <>
+      <div className='main__buttons'>
+        {item.inBasket > 1 ? 
+          (<img className="btn-remove__active" src='img/remove__active.svg' onClick={removeOneItemFromCar} />) : 
+          (<img className="btn-remove__not__active" src='img/remove__not__active.svg' />)
+        }
+        <p>{item.inBasket}</p>
+        <img className="btn-add__item" src='img/add__ring.svg' onClick={() => { addToCart(item, item.volume)}}></img>
+      </div>
+      {isSmallScreen ? '' : <img src='img/close__square__light.svg' onClick={handleRemoveToCart}></img>}
+    </>
+  )
 }
 
 export default SidePanel;

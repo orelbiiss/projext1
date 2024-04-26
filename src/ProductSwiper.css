@@ -1,6 +1,6 @@
 .product__swiper{
     font-family: TildaSansSemiBold;
-    font-size: 25px;
+    font-size: clamp(1.25rem, 1.182rem + 0.34vw, 1.563rem);
 }
 
 .product__swiper > p{
@@ -38,14 +38,14 @@
 }
 
 .potential__choices__info-name{
-    font-size: 12px;
+    font-size: clamp(0.75rem, 0.723rem + 0.14vw, 0.875rem);
     font-family: TildaSansSemibold;
     margin-bottom: 5px;
     line-height: 100%;
 }
 
 .potential__choices__info-volume{
-    font-size: 10px;
+    font-size: clamp(0.75rem, 0.723rem + 0.14vw, 0.875rem);
     font-family: TildaSansLight;
 
 }
@@ -78,7 +78,7 @@
 }
 
 
-@media screen and (min-width: 1800px){
+@media screen and (min-width: 1799px){
     .swipe__potentials {
         height: 210px;
         padding: 20px 5px;
@@ -91,5 +91,12 @@
         height: 210px;
         padding: 20px 5px;
         width: 100%;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .product__swiper > p{
+        font-size: clamp(1.25rem, 1.027rem + 1.12vw, 1.563rem)
     }
 }

@@ -6,7 +6,7 @@ import Catalog from './layouts/Catalog'
 import Sale from "./layouts/Sale";
 import AboutUs from "./layouts/AboutUs";
 import Contact from "./layouts/Contact";
-import PreLoader from './components/PreLoader';
+import PreLoader from './layouts/PreLoader';
 
 import {
   createBrowserRouter,

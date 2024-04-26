@@ -67,8 +67,8 @@
   gap: 20px;
   position: absolute;
   top: 90%;
-  right: -30px;
-  left: 70%;
+  width: 300px;
+  right: -12vh;
   padding: 20px 32px;
   box-shadow: 0 0 6px var(--accent-color);
   border-radius: 20px;
