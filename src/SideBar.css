@@ -146,7 +146,7 @@
     width: 100%;
     border: 1px dotted #7F7F7F;
     line-height: 1.4;
-    padding: 18px;
+    padding: 16px;
     font-size: 13px;
     font-family: TildaSansSemibold;
     outline:none;
@@ -325,6 +325,13 @@
 }
 
 .price__selected{
+    position: absolute;
+    bottom: 0;
+}
+.price__selected-discounted{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
     position: absolute;
     bottom: 0;
 }
@@ -581,6 +588,14 @@
     .total__price,
     .item__name {
         font-size: 18px;
+    }
+
+    .decorative__block {
+        width: calc(100% - 250px);
+    }
+
+    .accent__decorative__block{
+        width: calc(100% - 150px);;
     }
 
     .close__btn{

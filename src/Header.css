@@ -135,16 +135,10 @@
 
 @media screen and (min-width: 1800px){
 
- 
-  .icon__basket,
-  .profile__circle {
-    height: 30px;
-  }
-
   .icon__tg, .icon__vk, .icon__wa{
     width: 25px;
-    height: 34px;
-  }
+    height: 25px;
+  } 
 
   .count{
     top: 20px;

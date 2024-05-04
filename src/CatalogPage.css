@@ -183,7 +183,7 @@
     cursor: pointer;
     transition: 0.2s ease;
     z-index: 1;
-    width: 42px;
+    width: 40px;
   }
   
   .icon:hover{
@@ -322,8 +322,8 @@
 
   .volume,
   .volume__single__volume-btn {
-    padding: 6px 14px;
-    font-size: 14px;
+    padding: 5px 14px;
+    font-size: 12px;
   }
   
   .position__name{
@@ -337,9 +337,6 @@
   .product__volume {
     font-size: 14px;
     margin-top: 25px;
-  }
-  .icon {
-    width: 52px;
   }
 }
 

@@ -217,7 +217,6 @@ function ShoppingCart({ totalCost, price, totalItems, setUseRegistrationPanel, u
                 <p className='title__cost__info'>сумма заказа</p> 
                 <div className='product__price__cart__wrapper'>
                   <p className='product__price__cart'>стоимость продуктов</p>
-                  {/* <span className='decorative__block'></span> */}
                   <img src='../img/line__dotted.svg' className='decorative__block'></img>
                   <span>{totalCost} ₽</span>
                 </div>
@@ -290,7 +289,7 @@ function ShoppingCartCard({ item, price, setPanelOpen, panelOpen }) {
           <div className='block__product__quantity__management'>
           {isSmallScreen ? <img src='img/more__vertical.svg' onClick={() => setPanelOpen(!panelOpen)}></img> : showProductQuantity ? <ProductQuantityManagement item = {item}/> : '' }
           </div>
-          <p className='price__selected'>{ price }  ₽</p>
+          {'sale' in item ? <p className='price__selected-discounted'><span className='outdated__price'>{ price } ₽</span>{ price * (item.sale / 100)}  ₽</p> : <p className='price__selected'>{ price }  ₽</p>}
         </div>
       </div>
     </>
