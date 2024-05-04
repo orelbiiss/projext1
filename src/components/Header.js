@@ -1,12 +1,19 @@
 import React, { useContext, useState } from 'react';
-import { useMediaQuery } from 'usehooks-ts'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import SidePanel from './SideBar.js';
 import '../Header.css';
 import { CartContext } from '../layouts/CartContext.js';
 
 
 function Header() {
+
+  const location = useLocation(); // Получаем текущий URL с помощью useLocation
+
+  // Проверяем, находится ли пользователь на странице productpage
+  const isProductPage = location.pathname === '/productPage';
+
+  // Стили для ProductSwiper
+  const productSwiperStyle = isProductPage ? 'productpage-header__section' : 'header__section';
 
   const { cart } = useContext(CartContext);
   const { setLoginWindowOpen } = useContext(CartContext);
@@ -26,7 +33,7 @@ function Header() {
 }
   
   return(
-    <header className="header__section">
+    <header className={productSwiperStyle}>
       <div className="social__media__icons">
         <a href="https://web.telegram.org/a/">
           <img src='img/icon__tg.svg'className="icon__tg"></img>

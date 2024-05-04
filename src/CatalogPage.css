@@ -64,6 +64,7 @@
 
   .section__name{
     display: flex;
+    width: max-content;
     align-items: center;
     font-family: TildaSansLight;
     font-size: clamp(0.75rem, 0.663rem + 0.38vw, 1.125rem);
@@ -201,13 +202,14 @@
   .position__name__hover{
     display: flex;
     align-items: center;
-    font-size: 18.1px;
+    font-size: 18px;
     font-family: TildaSansMedium;
     line-height: 110%;
     color: var(--accent-color);
     width: 100%;
     transition: 0.2s ease;
     margin: 8px 0;
+    transform: scale(1.03);
   }
   
   .volume__section{
@@ -216,10 +218,11 @@
     margin: 0 0 7px;
   }
   
-  .volume{
+  .volume,
+  .volume__single__volume-btn{
     border: 1px solid #7F7F7F;
     border-radius: 100px;
-    padding: 5px 11px;
+    padding: 5px 10px;
     font-family: TildaSansSemiBold;
     font-size: 10px;
     cursor: pointer;
@@ -233,9 +236,14 @@
   }
 
   .volume:not(.active){
-    transform: scale(1.12);
     border-color: var(--accent-color);
     color: var(--accent-color);
+  }
+
+  .volume__single__volume-btn{
+    cursor: default;
+    border-color: #a1a1a1;
+    color: #a1a1a1;
   }
   
   .position__name{
@@ -250,14 +258,40 @@
     margin: 8px 0;
   }
   
-  .product__price{
+  
+  .price__block{
     display: flex;
     flex: 1;
     align-items: end;
     margin: 7px 0 0;
+  }
+
+  .discounted__price{
+    margin-right: 30px;
+    font-size: 18px;
+    font-family: TildaSansSemiBold;
+  }
+
+  .outdated__price::before{
+    content: '';
+    width: 100%;
+    top: 50%;
+    left: 0;
+    border: 1px solid #7F7F7F;;
+    position: absolute;
+  }
+
+  .product__price,
+  .outdated__price{
+    position: relative;
     word-wrap: normal;
     font-size: 18px;
     font-family: TildaSansSemiBold;
+  }
+
+  .outdated__price{
+    padding: 0 8px;
+    color: #7F7F7F;
   }
 
 
@@ -286,7 +320,8 @@
     height: 45px;
   }
 
-  .volume {
+  .volume,
+  .volume__single__volume-btn {
     padding: 6px 14px;
     font-size: 14px;
   }
@@ -299,10 +334,6 @@
     font-size: 20.1px;
   }
 
-  .product__price {
-    font-size: 18px;
-    margin-top: 10px
-  }
   .product__volume {
     font-size: 14px;
     margin-top: 25px;
@@ -336,7 +367,8 @@
     width: clamp(18.125rem, -19.563rem + 37.69vw, 22.813rem);
 } 
 
-  .volume {
+  .volume,
+  .volume__single__volume-btn {
     padding: 6px 14px;
     font-size: 14px;
   }
@@ -346,10 +378,6 @@
     height: clamp(18.125rem, -19.563rem + 37.69vw, 22.813rem);
   }
 
-  .product__price {
-    font-size: 18px;
-    margin-top: 10px
-}
   .product__volume {
     font-size: 18px;
     margin-top: 25px;
@@ -381,16 +409,19 @@
       font-size: 10px;
   }
 
-  .volume{
+  .volume,
+  .volume__single__volume-btn{
     padding: 5px 9px;
-    font-size: 8px;
+    font-size: 7px;
   }
 
   .position__name{
       font-size: 16px;
   }
 
-  .product__price{
+  .product__price,
+  .outdated__price,
+  .discounted__price {
       font-size: 16px;
   }
   .icon{
@@ -400,7 +431,9 @@
 
 @media screen and (max-width: 880px) {
   .position__name,
-  .product__price {
+  .product__price,
+  .outdated__price,
+  .discounted__price {
     font-size: 14px;
   }
     .icon {
@@ -423,8 +456,9 @@
     gap: 6px;
     margin: 0 0 5;
   }
-  .volume{
-    padding: 4px 9px;
+  .volume,
+  .volume__single__volume-btn{
+    padding: 4px 8px;
     font-size: 6px;
   }
   .page__nav__wrapper > div {
@@ -472,7 +506,9 @@
     margin: 6px 0;
   }
   .position__name,
-  .product__price {
+  .product__price,
+  .outdated__price,
+  .discounted__price {
     font-size: 12px;
 }
 }

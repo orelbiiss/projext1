@@ -69,7 +69,7 @@ function MainBlock(){
                                     return (
                                         <div className={'volumes' + (volume !== CurrentVolume ? ' active' : '')}  key={i} onClick={() => handleVolumeClick(volume)}>
                                             <img src="/img/bottle__svg.svg"></img>
-                                            <p className="volumes_p">{ volume }</p>
+                                            <p className="volumes_p">{ volume } мл</p>
                                         </div>
                                 )})}
                             </div>
@@ -89,10 +89,7 @@ function MainBlock(){
                             {cart.some(item => item.id === product__information[0].id) ? "Добавить еще" : "Добавить в корзину" }
                         </button>
                     </div>
-                    <div className="product__swiper">
-                        <p>вам может понравиться: </p>
-                        <ProductSwiper/>
-                    </div>
+                    <ProductSwiper/>
                 </div> 
             </div>
         </>

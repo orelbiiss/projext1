@@ -11,6 +11,18 @@
   padding: 0 5%;
 }
 
+.productpage-header__section{
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  z-index: 5;
+  width: 100%;
+  top: 0px;
+  height: 80px;
+  padding: 0 5%;
+}
 
 .social__media__icons{
   display: flex;
@@ -107,8 +119,8 @@
   align-items: center;
   justify-content: center;
   color: var(--primary-fill-color);
-  top: 19px;
-  right: -5px;
+  top: 17px;
+  right: -8px;
   background-color: var(--accent-color);
   border-radius: 100px;
   cursor: pointer;
@@ -158,10 +170,18 @@
 
 /* Экраны шириной меньше 1024px */
 @media screen and (max-width: 1024px) {
-.icon__basket,
-.profile__circle {
-    height: 19px;
-}
+  .icon__basket,
+  .profile__circle {
+      height: 19px;
+  }
+
+  .count {
+    width: 16px;
+    height: 16px;
+    font-size: 8px;
+    top: 13px;
+    right: -7px;
+  }
 }
 
 /* Экраны меньше 768px */
@@ -373,6 +393,13 @@
   .icon__menu__default span:nth-child(4){
     animation: elem__4__reverse 1s ease forwards;
   }
+  .count {
+    width: 12px;
+    height: 12px;
+    font-size: 6px;
+    top: 12px;
+    right: 54px;
+  } 
 }
 
 /* Экраны высотой меньше 650px, шириной от 540px до 1024px */

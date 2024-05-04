@@ -11,7 +11,7 @@ import PreLoader from './layouts/PreLoader';
 import {
   createBrowserRouter,
   RouterProvider,
-} from "react-router-dom";
+} from "react-router-dom"; 
 import ProductPage from './layouts/ProductPage';
 import CartContextProvider from './layouts/CartContext';
 
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
     element: <Contact/>
   },
   {
-    path: "/product__page",
+    path: "/productPage",
     element: <ProductPage/>
   }
 

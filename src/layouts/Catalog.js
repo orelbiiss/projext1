@@ -150,6 +150,24 @@ function Card({ item }){
   // цена для выбранного объема товара
   const currentPriceIndex = item.volumes.indexOf(CurrentVolume);
   const currentPrice = item.prices[currentPriceIndex];
+
+  const price = ( item ) => {
+    let price;
+    let discounted__price;
+    if (CurrentVolume !== 0) {
+      price = currentPrice;
+      discounted__price = currentPrice - (currentPrice * (item.sale / 100));
+    } else {
+      if (item.prices.length > 1) {
+          price = 'от ' + item.prices[0];
+          discounted__price = 'от ' + (item.prices[0] - (item.prices[0] * (item.sale / 100)));
+      } else {
+          price = item.prices[0];
+          discounted__price = item.prices[0] - (item.prices[0] * (item.sale / 100));
+      }
+    }
+  return { price, discounted__price };
+}
   
   return(
     <div className='card'>
@@ -169,27 +187,30 @@ function Card({ item }){
             alt={item.name}
           />
         </picture>
-        <p className="product__volume">0,75л</p>
+        <p className="product__volume">{CurrentVolume === 0 ? item.volumes[0] / 1000 : CurrentVolume / 1000} л</p>
         <div className="icon__add">
           <img className="icon" src='/img/add__to__basket.svg' onClick={() => addToCart(item, CurrentVolume)} ></img>
         </div>
-        <Link to='/product__page' className= 'link__cover'></Link>
+        <Link to='/productPage' className= 'link__cover'></Link>
       </div>
       <div className="volume__section">
         {item.volumes.map((volume, index) => {
           return(
-            <p key={index} className={'volume' + (volume !== CurrentVolume ? ' active' : '')} onClick={() => handleVolumeClick(volume)}>
-            {volume}ml </p>
+            <p key={index} className={'volume' + (item.volumes.length === 1 ? '__single__volume-btn' : (volume !== CurrentVolume ? ' active' : ''))} onClick={() => handleVolumeClick(volume)}>
+            {volume} мл</p>
           )
         })}
       </div>
-      <a href="/product__page" className={applyHoverEffect ? 'position__name__hover' : 'position__name'}
+      <Link to="/productPage" className={applyHoverEffect ? 'position__name__hover' : 'position__name'}
         onMouseEnter={() => setapplyHoverEffect(true)}
         onMouseLeave={() => setapplyHoverEffect(false)}
       >
         {item.name.substring(0, 1).toUpperCase()+ item.name.substring(1, item.name.length).toLowerCase()}
-      </a>
-      <p className="product__price">{CurrentVolume !== 0 ? ` ${currentPrice}₽ ` : "от 100 ₽"}</p>
+      </Link>
+      <div className='price__block'>
+        {'sale' in item ? <p className='discounted__price'>{price(item).discounted__price} ₽</p> : ''}
+        <p className={'sale' in item ? 'outdated__price': 'product__price'}>{price(item).price} ₽</p> 
+      </div>
     </div>
   )
 }
