@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.9dd68db5.css",
+    "main.js": "/static/js/main.c67e65b7.js",
+    "static/js/453.ed3810f9.chunk.js": "/static/js/453.ed3810f9.chunk.js",
+    "static/media/middle__sausage.svg": "/static/media/middle__sausage.32adb1e9c447921849c0.svg",
+    "static/media/TildaSans-Light.woff2": "/static/media/TildaSans-Light.9df27024da31c1e64a58.woff2",
+    "static/media/TildaSans-Bold.woff2": "/static/media/TildaSans-Bold.7b20d6ac9e458d542ac9.woff2",
+    "static/media/TildaSans-Semibold.woff2": "/static/media/TildaSans-Semibold.3b24df94c76ce65b9fa6.woff2",
+    "static/media/TildaSans-ExtraBold.woff2": "/static/media/TildaSans-ExtraBold.0812de7519f8ec22faec.woff2",
+    "static/media/TildaSans-Medium.woff2": "/static/media/TildaSans-Medium.90e34d39fb42c65017a6.woff2",
+    "index.html": "/index.html",
+    "static/media/Ellipse__blue.svg": "/static/media/Ellipse__blue.8363c5e731c0f7f8c8b0.svg",
+    "static/media/Ellipse__pink.svg": "/static/media/Ellipse__pink.e95e3f20d1865dcdff2f.svg",
+    "main.9dd68db5.css.map": "/static/css/main.9dd68db5.css.map",
+    "main.c67e65b7.js.map": "/static/js/main.c67e65b7.js.map",
+    "453.ed3810f9.chunk.js.map": "/static/js/453.ed3810f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9dd68db5.css",
+    "static/js/main.c67e65b7.js"
+  ]
+}
