@@ -42,7 +42,7 @@ function SidePanel({ isOpen, onClose }) {
   const totalCost = price.reduce((acc, val) => acc + val, 0) 
   return (
     <div className={`${isOpen ? 'side__panel__open' : 'side__panel'}`}>
-      <div className='handleClickOutside' onClick={onClose}></div>
+      <div className='handleClickOutside' onClick={() => {onClose(); setLoginWindowOpen(false); setUseRegistrationPanel(false)}}></div>
       <div className='content__block'>
         <div className='content'> 
           <img src='img/close__square__light.svg' className='close__btn' onClick={() => {onClose(); setLoginWindowOpen(false); setUseRegistrationPanel(false)}}></img>
@@ -82,7 +82,7 @@ function RegisterUser(){
 
   const  CountryOption = countryInfo.map((item, i) => {
     return (
-      <div className='country' onClick={() => setCountry(item.name)} key={i}>
+      <div className='country' onClick={() => {setCountry(item.name); setCountryPanelOpen(!countryPanelOpen)}} key={i}>
         <img  className={item.className} src={item.flagImg} alt={item.name} />
         {item.name}
       </div>

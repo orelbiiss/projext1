@@ -12,7 +12,7 @@
 .promotion__num{
   display: flex;
   justify-content: end;
-  padding: 70px 5% 20px 5%;
+  padding: 150px 5% 20px 5%;
 }
 
 .promotion__num p{
@@ -202,11 +202,16 @@
 }
 
 .btn__more{
+  display: flex;
+  cursor: pointer;
+  width: 100%;
   padding: 12px 50px;
   border: 1px solid var(--text-color);
   border-radius: 100px;
   font-family: TildaSansMedium;
   transition: transform 0.3s ease;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn__more:hover{
@@ -216,7 +221,6 @@
 .btn__basket{
   display: flex;
   color: var(--primary-fill-color);
-  width: 100%;
   border: 0;
   cursor: pointer;
   transition: transform 0.3s ease;

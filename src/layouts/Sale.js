@@ -4,7 +4,7 @@ import UpBtn from '../components/UpBtn';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination } from 'swiper/modules';
+import { Pagination } from 'swiper/modules';
 import '../SalePage.css';
 
 
@@ -12,7 +12,6 @@ function Sale(){
     return(
     <>
         <Header />
-        <SwiperBanner/>
         <MainBlock/>
         <SetDrinks/>
         <Footer />
@@ -28,44 +27,19 @@ const stockInfo = [
         srcImg: '/img/set__drinks.png',
         title:"Узнай свой вкус",
         text:"Экономь, познавая вкусы! Узнай свой вкус с нашими ознакомительными наборами по выгодной цене. Дешевле, чем покупать по отдельности! Поторопись, количество ограничено! ",
-        deadline: ""
+        deadline: "ꚙ"
     },
     {
         className: 'slide',
-        srcImg: '/img/ddd.png',
-        text:"dfhdhhfdjhfjhf",
-        deadline: ""
-    },
-    {
-        className: 'slide',
-        srcImg: '/img/ddd.png',
-        text:"dfhdhhfdjhfjhf",
-        deadline: ""
-    },
-    {
-        className: 'slide',
-        srcImg: '/img/ddd.png',
-        text:"dfhdhhfdjhfjhf",
-        deadline: ""
-    },
-    // /sliders
-    {
-        className: 'slide',
-        srcImg: '/img/good__morning.png',
-        text:"Утренний бонус: Получите бесплатную бутылку сока при каждой покупке в период с 8:00 до 11:00 утра",
-        deadline: "1.04.24 до 1.05.24"
-    },
-    {
-        className: 'slide',
-        srcImg: '/img/ddd.png',
-        text:"Тройная радость: при покупке трех разных товаров - скидка 30% на самый дешевый из них",
-        deadline: ""
+        srcImg: '/img/promotion__banner.jpg',
+        text:"Покупай Добрый-Кола в банках или бутылках, и получай призы.",
+        deadline: "С 1 мая по 31 августа 2024 года"
     },
     {
         className: 'slide',
         srcImg: '/img/welcome.png',
         text:"Онлайн выгода: Получите скидку 300р на первую онлайн покупку при регистрации на сайте",
-        deadline: ""
+        deadline: "С 14 апреля по 20 сентября 2024 года"
     },
     {
         className: 'slide',
@@ -75,16 +49,22 @@ const stockInfo = [
     },
     {
         className: 'slide',
-        srcImg: '/img/promotion__1.png',
-        text:"dfhdhh",
-        deadline: ""
+        srcImg: '/img/good__morning.png',
+        text:"Утренний бонус: Получите бесплатную бутылку сока при каждой покупке в период с 8:00 до 11:00 утра",
+        deadline: " C 1 апреля по 1 мая 2024"
     },
     {
         className: 'slide',
         srcImg: '/img/frutonyanya.png',
-        text:"dfhdhhfdjhfjhf",
-        deadline: ""
-    }
+        text:'Покупайте молочные продукты ФрутоНяня, получайте кешбэк и выигрывайте призы.',
+        deadline: "С 8 апреля по 8 октября 2024"
+    },
+    {
+        className: 'slide',
+        srcImg: '/img/promotion__1.png',
+        text:"2+1 на соки САДЫ ПРИДОНЬЯ",
+        deadline: "С 19 апреля 2023 года по 31 мая 2024 года"
+    },
 ]
 
 function MainBlock(){
@@ -100,7 +80,7 @@ function MainBlock(){
 }
 
 function RemainingPromotions() {
-    const renderPromotions = stockInfo.slice(4).map((elem, i) => {
+    const renderPromotions = stockInfo.map((elem, i) => {
         return (
             <>
                 <div className={`promotion__${i}`} key={i}>
@@ -118,7 +98,6 @@ function RemainingPromotions() {
     // Создаем последовательность блоков
     const promotionBlocks = [];
     for (let i = 0; i < renderPromotions.length; i += 7) {
-        // Добавляем двойной блок
         promotionBlocks.push(
             <div className="triple__inline__block" key={i}>
                 {renderPromotions[i]}
@@ -149,37 +128,6 @@ function RemainingPromotions() {
             {promotionBlocks}
         </div>
     );
-}
-   
-
-    
-
-function SwiperBanner(){
-    const renderSlides = stockInfo.slice(0, 4).map((elem,i) =>{
-        return  (
-            <SwiperSlide key={i} length = {stockInfo.length}>
-                <img className={elem.className} src={elem.srcImg} alt={`Slide ${i}`} />
-            </SwiperSlide>
-        )
-    })
-
-    return(
-        <Swiper
-            loop={true}
-            pagination={{
-                dynamicBullets: true,
-            }}
-            // autoplay={{
-            //     delay: 2500,
-            //     disableOnInteraction: false,
-            //   }}
-            modules={[ Pagination]}
-            className="mySwiper"
-        >
-            {renderSlides}
-        </Swiper>
-    )
-
 }
 
 function SetDrinks(){

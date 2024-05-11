@@ -111,6 +111,8 @@
 .profile__circle{
   cursor: pointer;
   border: 0;
+  width: 23px;
+  height: 23px;
 }
 
 .count{
