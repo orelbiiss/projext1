@@ -183,7 +183,7 @@
     cursor: pointer;
     transition: 0.2s ease;
     z-index: 1;
-    width: 40px;
+    width: 35px;
   }
   
   .icon:hover{
@@ -422,7 +422,7 @@
       font-size: 16px;
   }
   .icon{
-      width: 32px;
+      width: 30px;
   }
 }
 
